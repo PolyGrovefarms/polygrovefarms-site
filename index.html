@@ -371,78 +371,6 @@
     .price-label { font-size: 0.8rem; text-transform: uppercase; color: var(--text-muted); }
     .price { font-size: 1.4rem; font-weight: 700; color: var(--gold); }
 
-    /* Interactive Breed Showcase Highlight Box with Photos */
-    .breed-showcase-box {
-      background: linear-gradient(135deg, #f7f6f0 0%, #ffffff 100%);
-      border: 2px solid var(--gold);
-      border-radius: 24px;
-      padding: 3rem;
-      margin: 3rem 0 2rem;
-      box-shadow: 0 12px 35px rgba(197, 155, 39, 0.1);
-    }
-
-    .breed-showcase-box h3 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 2.2rem;
-      color: var(--primary);
-      margin-bottom: 0.5rem;
-      text-align: center;
-    }
-
-    .breed-showcase-box > p {
-      text-align: center;
-      color: var(--text-muted);
-      margin-bottom: 2.5rem;
-      font-size: 1.05rem;
-    }
-
-    .breed-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 1.5rem;
-      margin-bottom: 2rem;
-    }
-
-    .breed-item-card {
-      background: white;
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 1.75rem 1.5rem;
-      text-align: center;
-      transition: all 0.2s ease;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-
-    .breed-item-card:hover {
-      border-color: var(--gold);
-      transform: translateY(-4px);
-      box-shadow: 0 8px 20px rgba(0,0,0,0.04);
-    }
-
-    .breed-img {
-      width: 80px;
-      height: 80px;
-      border-radius: 50%;
-      object-fit: cover;
-      margin-bottom: 1rem;
-      border: 2px solid var(--gold);
-      box-shadow: 0 4px 10px rgba(0,0,0,0.08);
-    }
-
-    .breed-item-card h4 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.4rem;
-      color: var(--primary);
-      margin-bottom: 0.4rem;
-    }
-
-    .breed-item-card p {
-      font-size: 0.88rem;
-      color: var(--text-muted);
-    }
-
     /* Beekeeper Bio Card */
     .beekeeper-card {
       background: #fefce8;
@@ -672,7 +600,7 @@
       nav { flex-direction: column; gap: 1rem; }
       .brand-banner { flex-direction: column; text-align: center; padding: 2.5rem 1.5rem; }
       .swarm-banner { grid-template-columns: 1fr; text-align: center; }
-      .story-section, .order-section, .breed-showcase-box { padding: 2rem 1.5rem; }
+      .story-section, .order-section { padding: 2rem 1.5rem; }
       .brand-crest { padding: 1.5rem 2rem; }
       .brand-crest-title { font-size: 2.1rem; }
     }
@@ -932,60 +860,10 @@
       </div>
     </section>
 
-    <!-- Interactive Order Reservation Form & Breed Breakdown with Photos -->
+    <!-- Interactive Order Reservation Form -->
     <section id="order" class="order-section">
       <h2>📦 Place or Reserve an Order</h2>
       <p>Submit your request below and we will contact you directly via call or text to confirm daily stock and Fern Forest farm pickup arrangements.</p>
-
-      <!-- Highlighted Visual Breed & Variety Showcase Box with Corrected Photos -->
-      <div class="breed-showcase-box">
-        <h3>✨ Available Poultry & Variety Breakdown</h3>
-        <p>Explore our specific chicken, turkey, and homestead varieties below, then select your choice directly in the reservation form.</p>
-        
-        <div class="breed-grid">
-          <div class="breed-item-card">
-            <img src="https://images.unsplash.com/photo-1548550023-2bdb3c5beed7?auto=format&fit=crop&w=300&q=80" alt="Jersey Giant Chicken" class="breed-img">
-            <h4>Jersey Giants</h4>
-            <p>Massive, docile dual-purpose heritage chickens.</p>
-          </div>
-
-          <div class="breed-item-card">
-            <img src="https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?auto=format&fit=crop&w=300&q=80" alt="Rhode Island Red" class="breed-img">
-            <h4>Rhode Island Reds</h4>
-            <p>Hardy, dependable brown egg layers.</p>
-          </div>
-
-          <div class="breed-item-card">
-            <img src="https://images.unsplash.com/photo-1612024960717-9e481b8ebd49?auto=format&fit=crop&w=300&q=80" alt="Ameraucana Chicken" class="breed-img">
-            <h4>Ermine Ameraucanas</h4>
-            <p>Striking plumage & beautiful blue egg genetics.</p>
-          </div>
-
-          <div class="breed-item-card">
-            <img src="https://images.unsplash.com/photo-1555685812-4b943f1cb0eb?auto=format&fit=crop&w=300&q=80" alt="Runner Duck" class="breed-img">
-            <h4>Runner Ducklings</h4>
-            <p>Active foragers, prolific egg layers.</p>
-          </div>
-
-          <div class="breed-item-card">
-            <img src="https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?auto=format&fit=crop&w=300&q=80" alt="White Turkey" class="breed-img">
-            <h4>Broad Breasted Whites</h4>
-            <p>Fast-growing meat turkey variety.</p>
-          </div>
-
-          <div class="breed-item-card">
-            <img src="https://images.unsplash.com/photo-1508672019048-805587630a5e?auto=format&fit=crop&w=300&q=80" alt="Heritage Turkey" class="breed-img">
-            <h4>Heritage Turkeys</h4>
-            <p>Robust, natural foraging turkey varieties.</p>
-          </div>
-
-          <div class="breed-item-card">
-            <img src="https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?auto=format&fit=crop&w=300&q=80" alt="Guinea Fowl" class="breed-img">
-            <h4>Guinea Fowl Keets</h4>
-            <p>Natural pest controllers for ticks & garden bugs.</p>
-          </div>
-        </div>
-      </div>
 
       <form action="mailto:info@polygrovefarms.com" method="post" enctype="text/plain">
         <div class="form-grid">
@@ -1000,7 +878,7 @@
           </div>
 
           <div class="form-group">
-            <label for="item">Primary Item Requested (Select Breed/Variety)</label>
+            <label for="item">Primary Item Requested</label>
             <select id="item" name="Item Requested">
               <optgroup label="Farm Fresh Eggs & Tilapia">
                 <option value="Fresh Chicken Eggs ($5/dz)">Fresh Chicken Eggs ($5/dz)</option>
