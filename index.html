@@ -1,447 +1,805 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Polygrove Farms | Fern Forest, Hawaii</title>
-    <style>
-        :root {
-            --primary-dark: #1b2d23;
-            --accent-gold: #c5a059;
-            --bg-cream: #f9f8f6;
-            --text-main: #333333;
-            --white: #ffffff;
-            --card-border: #e2ded8;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Polygrove Farms | Hilo Hive & Flame | Big Island, HI</title>
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Helvetica Neue', Arial, sans-serif;
-        }
+  <!-- Premium Editorial Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-        body {
-            background-color: var(--bg-cream);
-            color: var(--text-main);
-            line-height: 1.6;
-        }
+  <style>
+    :root {
+      --primary: #152e22;
+      --primary-accent: #234836;
+      --gold: #c59b27;
+      --gold-hover: #a37f1e;
+      --bg: #fcfbf7;
+      --card-bg: #ffffff;
+      --text: #1a221e;
+      --text-muted: #5a665e;
+      --border: #e8e6df;
+    }
 
-        /* Navigation */
-        header {
-            background-color: var(--primary-dark);
-            color: var(--white);
-            padding: 1.5rem 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
 
-        .logo-area h1 {
-            font-size: 1.5rem;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            color: var(--accent-gold);
-        }
+    body {
+      font-family: 'Inter', -apple-system, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+    }
 
-        .logo-area p {
-            font-size: 0.8rem;
-            color: #ccc;
-        }
+    /* Sticky Navigation Header */
+    nav {
+      position: sticky;
+      top: 0;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+      z-index: 1000;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
 
-        nav ul {
-            list-style: none;
-            display: flex;
-            gap: 2rem;
-        }
+    .nav-brand {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--primary);
+      text-decoration: none;
+      letter-spacing: 0.05em;
+    }
 
-        nav a {
-            color: var(--white);
-            text-decoration: none;
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: color 0.3s;
-        }
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+      list-style: none;
+    }
 
-        nav a:hover {
-            color: var(--accent-gold);
-        }
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text);
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
 
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(rgba(27, 45, 35, 0.75), rgba(27, 45, 35, 0.75)), url('hero-bg.jpg') center/cover no-repeat;
-            color: var(--white);
-            text-align: center;
-            padding: 6rem 2rem;
-        }
+    .nav-links a:hover { color: var(--gold); }
 
-        .hero h2 {
-            font-size: 2.8rem;
-            margin-bottom: 1rem;
-            letter-spacing: 1px;
-        }
+    /* Hero Section */
+    .hero {
+      background: linear-gradient(180deg, #ffffff 0%, var(--bg) 100%);
+      padding: 4rem 1.5rem 3rem;
+      text-align: center;
+      border-bottom: 1px solid var(--border);
+    }
 
-        .hero p {
-            font-size: 1.2rem;
-            max-width: 700px;
-            margin: 0 auto 2rem auto;
-            color: #e5e5e5;
-        }
+    /* Cleaned up logo section - NO white block background */
+    .hero-logo-container {
+      display: inline-block;
+      max-width: 320px;
+      width: 100%;
+      margin-bottom: 1.5rem;
+    }
 
-        .btn {
-            background-color: var(--accent-gold);
-            color: var(--primary-dark);
-            padding: 0.8rem 2rem;
-            border: none;
-            border-radius: 3px;
-            font-weight: bold;
-            text-transform: uppercase;
-            text-decoration: none;
-            letter-spacing: 1px;
-            cursor: pointer;
-            transition: background 0.3s;
-            display: inline-block;
-        }
+    .hero-logo-container img {
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+      background: transparent !important;
+      filter: drop-shadow(0px 8px 16px rgba(21, 46, 34, 0.12));
+    }
 
-        .btn:hover {
-            background-color: #d4b26d;
-        }
+    .hero-subtitle {
+      font-size: 1.25rem;
+      color: var(--text-muted);
+      max-width: 680px;
+      margin: 0 auto 1.75rem;
+      font-weight: 300;
+    }
 
-        /* Main Container */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 4rem 2rem;
-        }
+    .status-bar {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      background: #f0fdf4;
+      border: 1px solid #bbf7d0;
+      padding: 0.5rem 1.25rem;
+      border-radius: 50px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: #166534;
+    }
 
-        .section-title {
-            text-align: center;
-            margin-bottom: 3rem;
-        }
+    .pulse-dot {
+      width: 10px;
+      height: 10px;
+      background: #22c55e;
+      border-radius: 50%;
+      box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.25);
+    }
 
-        .section-title h3 {
-            font-size: 2rem;
-            color: var(--primary-dark);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 0.5rem;
-        }
+    /* Main Container */
+    .container {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 4rem 1.5rem;
+    }
 
-        .section-title p {
-            color: #666;
-            font-size: 1rem;
-        }
+    /* Editorial Story Card */
+    .story-section {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 3.5rem;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.02);
+      margin-bottom: 4rem;
+    }
 
-        /* Grid Layouts */
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
+    .story-section h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.4rem;
+      color: var(--primary);
+      margin-bottom: 1.25rem;
+    }
 
-        .card {
-            background: var(--white);
-            border: 1px solid var(--card-border);
-            border-radius: 4px;
-            padding: 2rem;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
+    .story-section p {
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      margin-bottom: 1.25rem;
+    }
 
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 15px rgba(0,0,0,0.05);
-        }
+    /* Section Titles */
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.4rem;
+      color: var(--primary);
+      margin: 4rem 0 0.5rem;
+      border-bottom: 2px solid var(--gold);
+      padding-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
 
-        .card h4 {
-            color: var(--primary-dark);
-            font-size: 1.3rem;
-            margin-bottom: 1rem;
-            border-bottom: 2px solid var(--accent-gold);
-            padding-bottom: 0.5rem;
-        }
+    .section-subtitle-text {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      margin-bottom: 2rem;
+    }
 
-        .card ul {
-            list-style-type: none;
-            margin-top: 1rem;
-        }
+    /* High-End Hilo Hive Banner */
+    .brand-banner {
+      background: radial-gradient(circle at 80% 20%, #1e293b 0%, #090d16 100%);
+      color: white;
+      border-radius: 24px;
+      padding: 3.5rem 3rem;
+      margin: 3rem 0 2rem;
+      display: flex;
+      align-items: center;
+      gap: 3rem;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+      border: 1px solid #334155;
+      position: relative;
+      overflow: hidden;
+    }
 
-        .card ul li {
-            padding: 0.40rem 0;
-            border-bottom: 1px solid #f0f0f0;
-            color: #555;
-            font-size: 0.95rem;
-        }
+    /* Subtle SVG Honeycomb Pattern Background */
+    .brand-banner::before {
+      content: "";
+      position: absolute;
+      top: 0; right: 0; bottom: 0; left: 0;
+      background-image: url("data:image/svg+xml,%3Csvg width='56' height='100' viewBox='0 0 56 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M28 66L0 50L0 16L28 0L56 16L56 50L28 66ZM28 100L0 84L0 68L28 84L56 68L56 84L28 100Z' fill='%2f59e0b' fill-opacity='0.04' fill-rule='evenodd'/%3E%3C/svg%3E");
+      opacity: 0.8;
+      pointer-events: none;
+    }
 
-        .card ul li:last-child {
-            border-bottom: none;
-        }
+    .hive-badge {
+      border: 1.5px solid rgba(245, 158, 11, 0.6);
+      padding: 2rem 2.5rem;
+      border-radius: 20px;
+      text-align: center;
+      min-width: 260px;
+      background: rgba(15, 23, 42, 0.75);
+      backdrop-filter: blur(8px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+      position: relative;
+      z-index: 1;
+    }
 
-        /* Order Form Section */
-        .order-section {
-            background: var(--white);
-            border: 1px solid var(--card-border);
-            border-radius: 4px;
-            padding: 3rem;
-            margin-top: 4rem;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
-        }
+    .hive-badge-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: #fbbf24;
+      line-height: 1.05;
+      letter-spacing: 0.04em;
+    }
 
-        .order-form {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1.5rem;
-            margin-top: 2rem;
-        }
+    .hive-badge-divider {
+      height: 1px;
+      width: 40px;
+      background: #f59e0b;
+      margin: 0.75rem auto;
+      opacity: 0.6;
+    }
 
-        .form-group {
-            display: flex;
-            flex-direction: column;
-        }
+    .hive-badge-sub {
+      font-size: 0.75rem;
+      color: #e2e8f0;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      font-weight: 600;
+    }
 
-        .form-group.full-width {
-            grid-column: span 2;
-        }
+    .brand-info {
+      position: relative;
+      z-index: 1;
+    }
 
-        .form-group label {
-            font-weight: bold;
-            color: var(--primary-dark);
-            margin-bottom: 0.5rem;
-            font-size: 0.9rem;
-            text-transform: uppercase;
-        }
+    .brand-info h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.5rem;
+      color: #fef3c7;
+      margin-bottom: 0.5rem;
+      line-height: 1.2;
+    }
 
-        .form-group input, 
-        .form-group select, 
-        .form-group textarea {
-            padding: 0.8rem;
-            border: 1px solid var(--card-border);
-            border-radius: 3px;
-            font-size: 1rem;
-            background-color: var(--bg-cream);
-        }
+    .brand-info p {
+      color: #94a3b8;
+      font-size: 1.1rem;
+      max-width: 580px;
+    }
 
-        .form-group textarea {
-            resize: vertical;
-            height: 120px;
-        }
+    /* Product Grid */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
 
-        /* Footer */
-        footer {
-            background-color: var(--primary-dark);
-            color: var(--white);
-            text-align: center;
-            padding: 3rem 2rem;
-            margin-top: 4rem;
-        }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+    }
 
-        footer p {
-            color: #aaa;
-            font-size: 0.9rem;
-            margin-top: 1rem;
-        }
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 30px rgba(0,0,0,0.06);
+      border-color: var(--gold);
+    }
 
-        .social-links {
-            margin-bottom: 1rem;
-        }
+    .badge {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--primary);
+      background: #f0fdf4;
+      padding: 0.3rem 0.75rem;
+      border-radius: 50px;
+      margin-bottom: 1rem;
+    }
 
-        .social-links a {
-            color: var(--accent-gold);
-            text-decoration: none;
-            margin: 0 1rem;
-            font-weight: bold;
-        }
+    .badge-honey {
+      color: #78350f;
+      background: #fef3c7;
+    }
 
-        .social-links a:hover {
-            text-decoration: underline;
-        }
+    .card h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.75rem;
+      color: var(--primary);
+      margin-bottom: 0.5rem;
+    }
 
-        @media (max-width: 768px) {
-            .order-form {
-                grid-template-columns: 1fr;
-            }
-            .form-group.full-width {
-                grid-column: span 1;
-            }
-        }
-    </style>
+    .card p {
+      color: var(--text-muted);
+      font-size: 0.98rem;
+    }
+
+    .card-footer {
+      border-top: 1px solid var(--border);
+      padding-top: 1.25rem;
+      margin-top: 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .price-label { font-size: 0.8rem; text-transform: uppercase; color: var(--text-muted); }
+    .price { font-size: 1.4rem; font-weight: 700; color: var(--gold); }
+
+    /* Beekeeper Bio Card */
+    .beekeeper-card {
+      background: #fefce8;
+      border: 1px solid #fde047;
+      border-radius: 20px;
+      padding: 2.5rem;
+      margin: 2.5rem 0 3rem;
+    }
+
+    .beekeeper-card h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.8rem;
+      color: #854d0e;
+      margin-bottom: 0.5rem;
+    }
+
+    .beekeeper-card p {
+      color: #713f12;
+      font-size: 1.05rem;
+    }
+
+    /* Order Form Section */
+    .order-section {
+      background: #ffffff;
+      border: 2px solid var(--primary);
+      border-radius: 24px;
+      padding: 3.5rem;
+      margin: 4rem 0;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+    }
+
+    .order-section h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.4rem;
+      color: var(--primary);
+      margin-bottom: 0.5rem;
+      text-align: center;
+    }
+
+    .order-section p {
+      text-align: center;
+      color: var(--text-muted);
+      margin-bottom: 2rem;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .form-group label {
+      font-weight: 600;
+      font-size: 0.9rem;
+      color: var(--primary);
+    }
+
+    .form-group input, .form-group select, .form-group textarea {
+      padding: 0.85rem 1rem;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      font-family: inherit;
+      font-size: 1rem;
+      background: #fdfdfd;
+    }
+
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+      outline: none;
+      border-color: var(--gold);
+      box-shadow: 0 0 0 3px rgba(197, 155, 39, 0.15);
+    }
+
+    /* Testimonials Section */
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .testimonial-card {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 2rem;
+    }
+
+    .testimonial-card p {
+      font-style: italic;
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+    }
+
+    .testimonial-author {
+      font-weight: 700;
+      color: var(--primary);
+      font-size: 0.95rem;
+    }
+
+    .testimonial-location {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    /* Emergency Swarm Removal Banner */
+    .swarm-banner {
+      background: linear-gradient(135deg, #152e22 0%, #0b1a13 100%);
+      color: white;
+      border-radius: 24px;
+      padding: 3.5rem;
+      margin: 5rem 0;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 2rem;
+      align-items: center;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+    }
+
+    .swarm-banner h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.2rem;
+      color: #fef3c7;
+      margin-bottom: 0.5rem;
+    }
+
+    /* Support / Feed Section */
+    .donate-banner {
+      background: #fffbeb;
+      border: 2px dashed #fef08a;
+      border-radius: 24px;
+      padding: 3.5rem;
+      text-align: center;
+      margin: 4rem 0;
+    }
+
+    .donate-banner h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.2rem;
+      color: #854d0e;
+      margin-bottom: 0.75rem;
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-block;
+      background: var(--gold);
+      color: white;
+      border: none;
+      text-decoration: none;
+      padding: 0.9rem 2.2rem;
+      border-radius: 12px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .btn:hover {
+      background: var(--gold-hover);
+      transform: translateY(-2px);
+    }
+
+    .btn-emergency { background: #dc2626; }
+    .btn-emergency:hover { background: #b91c1c; }
+    .btn-venmo { background: #008cff; }
+    .btn-venmo:hover { background: #0070cc; }
+
+    /* Contact & Location Footer Box */
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2rem;
+      margin-top: 4rem;
+    }
+
+    .footer-card {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 3rem 2rem;
+      text-align: center;
+    }
+
+    .footer-card h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2rem;
+      color: var(--primary);
+      margin-bottom: 1rem;
+    }
+
+    @media (max-width: 768px) {
+      nav { flex-direction: column; gap: 1rem; }
+      .brand-banner { flex-direction: column; text-align: center; padding: 2.5rem 1.5rem; }
+      .swarm-banner { grid-template-columns: 1fr; text-align: center; }
+      .story-section, .order-section { padding: 2rem 1.5rem; }
+    }
+  </style>
 </head>
 <body>
 
-    <!-- Header & Navigation -->
-    <header>
-        <div class="logo-area">
-            <h1>Polygrove Farms</h1>
-            <p>Fern Forest, Hawaii</p>
-        </div>
-        <nav>
-            <ul>
-                <li><a href="#about">About</a></li>
-                <li><a href="#flock">Our Flock</a></li>
-                <li><a href="#goods">Farm Goods</a></li>
-                <li><a href="#order">Reserve Stock</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
+  <!-- Sticky Nav -->
+  <nav>
+    <a href="#" class="nav-brand">POLYGROVE FARMS</a>
+    <ul class="nav-links">
+      <li><a href="#story">Our Story</a></li>
+      <li><a href="#eggs">Eggs</a></li>
+      <li><a href="#apiary">Hilo Hive & Flame</a></li>
+      <li><a href="#chicks">Live Hatchlings</a></li>
+      <li><a href="#order">Reserve Order</a></li>
+      <li><a href="#swarm">Swarm Removal</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <h2>Sustainably Raised in the Rainforest</h2>
-        <p>High-elevation homesteading, Korean Natural Farming methods, pasture-raised poultry, and pure local apiary goods from Fern Forest.</p>
-        <a href="#order" class="btn">Reserve Hatchlings</a>
+  <!-- Hero Banner -->
+  <section class="hero">
+    <div class="hero-logo-container">
+      <img src="polygrove-logo.png" alt="Polygrove Farms Logo">
+    </div>
+    <p class="hero-subtitle">Pasture-Raised Poultry, Hilo Hive & Flame Apiary Goods, and Live Hatchlings in Mountain View, Hawaii</p>
+    
+    <div class="status-bar">
+      <span class="pulse-dot"></span> Call / Text Direct: (808) 481-7982
+    </div>
+  </section>
+
+  <div class="container">
+
+    <!-- Our Story -->
+    <section id="story" class="story-section">
+      <h2>🌿 Our Story & Homestead Mission</h2>
+      <p>Nestled on the lush slopes of the Big Island in Hawaii, <strong>Polygrove Farms</strong> is an integrated homestead and farm dedicated to sustainable agriculture, ethical animal husbandry, and thriving apiaries.</p>
+      <p>Our pasture-raised flock enjoys fresh tropical air, natural foraging, and exceptional care—producing rich chicken and duck eggs daily. Alongside our poultry, we tend healthy honeybee colonies under our artisan line, <strong>Hilo Hive & Flame</strong>, crafting raw island honey, hand-poured beeswax candles, and natural skincare. We are passionate about supporting our local community through sustainable farming and humane bee removal services.</p>
     </section>
 
-    <!-- Main Content -->
-    <div class="container">
-
-        <!-- About Section -->
-        <section id="about" class="section-title" style="margin-bottom: 4rem;">
-            <h3>Welcome to Polygrove Farms</h3>
-            <p style="max-width: 800px; margin: 1rem auto 0 auto;">Operating an integrated, off-grid homestead and farm at 2,500 feet elevation. We focus on unmedicated organic care, natural pasture management, and Korean Natural Farming (KNF) methods to cultivate a thriving ecosystem tailored to our rainforest climate.</p>
-        </section>
-
-        <!-- Flock Section -->
-        <div id="flock" class="section-title">
-            <h3>Our Poultry Roster</h3>
-            <p>Healthy, vibrant heritage and production lines raised on natural pasture</p>
+    <!-- Pasture-Raised Eggs -->
+    <section id="eggs">
+      <h2 class="section-title">🥚 Pasture-Raised Eggs</h2>
+      <p class="section-subtitle-text">Gathered daily from our free-ranging flock on the Big Island.</p>
+      <div class="grid">
+        <div class="card">
+          <div>
+            <span class="badge">Daily Harvest</span>
+            <h3>Fresh Eating Eggs</h3>
+            <p>Hand-gathered daily from our pasture-raised flock. Superior golden yolks and exceptional natural taste.</p>
+          </div>
+          <div class="card-footer">
+            <span class="price-label">Price</span>
+            <span class="price">$5.00 / doz</span>
+          </div>
         </div>
 
-        <div class="grid">
-            <!-- Ducks -->
-            <div class="card">
-                <h4>Waterfowl</h4>
-                <p>Active foragers with distinct upright posture and high egg-laying capacity.</p>
-                <ul>
-                    <li><strong>Runner Ducks:</strong> Upright, penguin-like stride with a 28-day hatching timeline.</li>
-                </ul>
-            </div>
+        <div class="card">
+          <div>
+            <span class="badge">Pasture-Raised</span>
+            <h3>Pasture-Raised Duck Eggs</h3>
+            <p>Rich, extra-large eggs with thick creamy yolks. Highly favored for baking and culinary dishes.</p>
+          </div>
+          <div class="card-footer">
+            <span class="price-label">Price</span>
+            <span class="price">$8.00 / doz</span>
+          </div>
+        </div>
+      </div>
+    </section>
 
-            <!-- Chickens -->
-            <div class="card">
-                <h4>Chicken Breeds</h4>
-                <p>Hardy layers and robust dual-purpose birds providing a colorful egg basket.</p>
-                <ul>
-                    <li><strong>Rhode Island Reds:</strong> Deep rust-red plumage, steady and dependable.</li>
-                    <li><strong>Jersey Giants:</strong> Massive, heavy-bodied birds with commanding presence.</li>
-                    <li><strong>Blue Andalusians:</strong> Striking slate-blue feathers with dark lacing.</li>
-                    <li><strong>Red Stars (Sex Links):</strong> Golden-red layers with friendly dispositions.</li>
-                </ul>
-            </div>
+    <!-- Apiary & Hive Goods: Hilo Hive & Flame -->
+    <section id="apiary">
+      
+      <!-- Premium Hilo Hive & Flame Card Banner -->
+      <div class="brand-banner">
+        <div class="hive-badge">
+          <div class="hive-badge-title">Hilo Hive & Flame</div>
+          <div class="hive-badge-divider"></div>
+          <div class="hive-badge-sub">Honey • Candle • Wax</div>
+        </div>
+        <div class="brand-info">
+          <h2>Crafted by Nature. Lit with Love.</h2>
+          <p>Small-batch raw honey, hand-poured beeswax candles, and natural skincare harvested directly from our hives on the Big Island.</p>
+        </div>
+      </div>
 
-            <!-- Turkeys -->
-            <div class="card">
-                <h4>Turkeys</h4>
-                <p>Magnificent heritage and broad-breasted lines managed with care.</p>
-                <ul>
-                    <li><strong>Bourbon Red Turkeys:</strong> Rich chestnut-mahogany plumage with clean white flight feathers.</li>
-                    <li><strong>Broad Breasted White Turkeys:</strong> Heavy-set commercial meat lines with solid white frames.</li>
-                </ul>
-            </div>
+      <div class="grid">
+        <div class="card">
+          <div>
+            <span class="badge badge-honey">Raw & Unfiltered</span>
+            <h3>Pure Island Honey</h3>
+            <p>100% pure, small-batch wildflower honey harvested directly from our Hilo Hive & Flame apiaries in Hawaii.</p>
+          </div>
+          <div class="card-footer">
+            <span class="price-label">Harvest</span>
+            <span class="price">Inquire Jars</span>
+          </div>
         </div>
 
-        <!-- Farm Goods Section -->
-        <div id="goods" class="section-title" style="margin-top: 5rem;">
-            <h3>Apiary & Farm Goods</h3>
-            <p>From Hilo Hive & Flame, our sustainable homestead, and upcoming nursery stock</p>
+        <div class="card">
+          <div>
+            <span class="badge badge-honey">Hand-Poured</span>
+            <h3>Handcrafted Beeswax Candles</h3>
+            <p>Clean-burning, golden candles hand-poured with pure, natural beeswax harvested from our hives.</p>
+          </div>
+          <div class="card-footer">
+            <span class="price-label">Small Batch</span>
+            <span class="price">Inquire Availability</span>
+          </div>
         </div>
 
-        <div class="grid">
-            <div class="card">
-                <h4>Fresh Eggs</h4>
-                <p>Fresh daily farm-collected table and duck eggs, gathered from pasture-raised hens and ducks.</p>
-            </div>
-            <div class="card">
-                <h4>Hive & Flame</h4>
-                <p>Pure local raw honey, handcrafted beeswax candles, and botanical soaps crafted from our apiary harvests.</p>
-            </div>
-            <div class="card">
-                <h4>Hatchlings & Stock</h4>
-                <p>Seasonal availability of healthy ducklings, chicks, and poults raised right here in Fern Forest.</p>
-            </div>
+        <div class="card">
+          <div>
+            <span class="badge badge-honey">Natural Skincare</span>
+            <h3>Beeswax & Honey Lotions</h3>
+            <p>Nourishing body creams and lotions formulated with pure island honey and protective natural beeswax.</p>
+          </div>
+          <div class="card-footer">
+            <span class="price-label">Handcrafted</span>
+            <span class="price">Inquire Availability</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Beekeeper Bio Section -->
+      <div class="beekeeper-card">
+        <h3>🐝 Natural Hive Care & Swarm Protection</h3>
+        <p>At Hilo Hive & Flame, our bees are cared for using chemical-free, natural beekeeping standards. Every jar of honey and block of beeswax comes from colonies that forage freely across native Big Island flora. When local swarms need relocating, we safely rescue and rehome them in our apiary.</p>
+      </div>
+    </section>
+
+    <!-- Live Birds -->
+    <section id="chicks">
+      <h2 class="section-title">🐥 Live Hatchlings</h2>
+      <p class="section-subtitle-text">Healthy day-old chicks and ducklings raised on clean pasture protocols.</p>
+      <div class="grid">
+        <div class="card">
+          <div>
+            <span class="badge">Seasonal Batch</span>
+            <h3>Day-Old Chicks</h3>
+            <p>Vibrant, healthy chicks from quality heritage and laying breeds.</p>
+          </div>
+          <div class="card-footer">
+            <span class="price-label">Availability</span>
+            <span class="price">Seasonal</span>
+          </div>
         </div>
 
-        <!-- Order / Reservation Form Section -->
-        <div id="order" class="order-section">
-            <div class="section-title" style="margin-bottom: 1.5rem;">
-                <h3>Reserve Hatchlings & Livestock</h3>
-                <p>Select your desired breeds or inquire about upcoming fruit trees and plants below.</p>
-            </div>
+        <div class="card">
+          <div>
+            <span class="badge">Pasture Breeds</span>
+            <h3>Ducklings</h3>
+            <p>Healthy, energetic ducklings raised in our pasture breeding program.</p>
+          </div>
+          <div class="card-footer">
+            <span class="price-label">Availability</span>
+            <span class="price">Seasonal</span>
+          </div>
+        </div>
+      </div>
+    </section>
 
-            <form class="order-form" action="#" method="POST">
-                <div class="form-group">
-                    <label for="name">Your Name</label>
-                    <input type="text" id="name" name="name" required placeholder="Full Name">
-                </div>
+    <!-- Interactive Order Reservation Form -->
+    <section id="order" class="order-section">
+      <h2>📦 Place or Reserve an Order</h2>
+      <p>Submit your request below and we will contact you directly via call or text to confirm daily stock and pickup arrangements.</p>
 
-                <div class="form-group">
-                    <label for="contact-info">Phone or Email</label>
-                    <input type="text" id="contact-info" name="contact-info" required placeholder="Best way to reach you">
-                </div>
+      <form action="mailto:info@polygrovefarms.com" method="post" enctype="text/plain">
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="name">Your Full Name</label>
+            <input type="text" id="name" name="Name" placeholder="e.g. Malia Silva" required>
+          </div>
 
-                <div class="form-group full-width">
-                    <label for="breed-select">Select Preferred Breed or Stock</label>
-                    <select id="breed-select" name="breed-select" required>
-                        <option value="" disabled selected>-- Choose from our offerings --</option>
-                        <optgroup label="Ducks">
-                            <option value="runner-duck">Runner Ducks (Ducklings / Hatching Eggs)</option>
-                        </optgroup>
-                        <optgroup label="Chickens">
-                            <option value="rhode-island-red">Rhode Island Reds (Chicks)</option>
-                            <option value="jersey-giant">Jersey Giants (Chicks)</option>
-                            <option value="blue-andalusian">Blue Andalusians (Chicks)</option>
-                            <option value="red-star">Red Stars / Sex Links (Chicks)</option>
-                        </optgroup>
-                        <optgroup label="Turkeys">
-                            <option value="bourbon-red">Bourbon Red Turkeys (Poults)</option>
-                            <option value="broad-breasted-white">Broad Breasted White Turkeys (Poults)</option>
-                        </optgroup>
-                        <optgroup label="Nursery & Plants (Upcoming)">
-                            <option value="fruit-trees">Fruit Trees (Inquire for Availability)</option>
-                            <option value="plants">Specialty Rainforest Plants & Herbs</option>
-                        </optgroup>
-                    </select>
-                </div>
+          <div class="form-group">
+            <label for="phone">Phone Number (Call / Text)</label>
+            <input type="tel" id="phone" name="Phone" placeholder="(808) 000-0000" required>
+          </div>
 
-                <div class="form-group">
-                    <label for="quantity">Estimated Quantity</label>
-                    <input type="number" id="quantity" name="quantity" min="1" placeholder="Number desired">
-                </div>
+          <div class="form-group">
+            <label for="item">Primary Item Requested</label>
+            <select id="item" name="Item Requested">
+              <option value="Fresh Chicken Eggs ($5/dz)">Fresh Chicken Eggs ($5/dz)</option>
+              <option value="Pasture Duck Eggs ($8/dz)">Pasture Duck Eggs ($8/dz)</option>
+              <option value="Hilo Hive & Flame Pure Honey">Hilo Hive & Flame Pure Honey</option>
+              <option value="Handcrafted Beeswax Candles">Handcrafted Beeswax Candles</option>
+              <option value="Beeswax & Honey Lotions">Beeswax & Honey Lotions</option>
+              <option value="Live Chicks / Ducklings">Live Chicks / Ducklings</option>
+            </select>
+          </div>
 
-                <div class="form-group">
-                    <label for="pickup">Pickup or Delivery</label>
-                    <select id="pickup" name="pickup">
-                        <option value="farm-pickup">Fern Forest Farm Pickup</option>
-                        <option value="inquire">Inquire about local coordination</option>
-                    </select>
-                </div>
-
-                <div class="form-group full-width">
-                    <label for="notes">Additional Notes / Questions</label>
-                    <textarea id="notes" name="notes" placeholder="Let us know your preferred timeframe, plant interests, or any questions..."></textarea>
-                </div>
-
-                <div class="form-group full-width" style="text-align: center; margin-top: 1rem;">
-                    <button type="submit" class="btn" style="width: 100%;">Submit Reservation Request</button>
-                </div>
-            </form>
+          <div class="form-group">
+            <label for="quantity">Quantity Desired</label>
+            <input type="text" id="quantity" name="Quantity" placeholder="e.g. 2 dozen / 1 jar" required>
+          </div>
         </div>
 
+        <div class="form-group" style="margin-bottom: 1.5rem;">
+          <label for="notes">Additional Notes / Preferred Pickup Time</label>
+          <textarea id="notes" name="Notes" rows="3" placeholder="Let us know any preferences or preferred pickup dates..."></textarea>
+        </div>
+
+        <div style="text-align: center;">
+          <button type="submit" class="btn" style="padding: 1rem 3rem; font-size: 1.05rem;">Submit Reservation Request</button>
+        </div>
+      </form>
+    </section>
+
+    <!-- Customer Reviews -->
+    <section>
+      <h2 class="section-title">⭐ Words From Our Community</h2>
+      <div class="testimonials-grid">
+        <div class="testimonial-card">
+          <p>"The eggs from Polygrove Farms have the richest, deepest orange yolks I've ever seen on the Big Island. Unbeatable quality!"</p>
+          <div class="testimonial-author">Local Customer Review</div>
+          <div class="testimonial-location">Mountain View, HI</div>
+        </div>
+
+        <div class="testimonial-card">
+          <p>"Hilo Hive & Flame candles burn so clean and smell incredible naturally. Knowing the honey and wax come right from local hives makes it even better."</p>
+          <div class="testimonial-author">Local Customer Review</div>
+          <div class="testimonial-location">Volcano, HI</div>
+        </div>
+
+        <div class="testimonial-card">
+          <p>"Prompt, professional bee swarm relocation! They safely rescued a wild swarm on our property and gave them a permanent home."</p>
+          <div class="testimonial-author">Community Member</div>
+          <div class="testimonial-location">Fern Forest, HI</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Animal Feed Donation -->
+    <div class="donate-banner">
+      <h2>🌾 Feed & Support Our Animals</h2>
+      <p>We are dedicated to providing our flock and apiaries with organic feed, natural shelter, and ethical pasture management. If you'd like to sponsor a bag of feed or support our farm sanctuary, contributions are warmly welcomed!</p>
+      <div style="margin-top: 1.5rem; display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
+        <a href="https://venmo.com/Emy-Mahoney" target="_blank" class="btn btn-venmo">Donate via Venmo (@Emy-Mahoney)</a>
+        <a href="mailto:info@polygrovefarms.com?subject=Animal%20Feed%20Sponsorship" class="btn">Sponsor Feed / Contact Us</a>
+      </div>
     </div>
 
-    <!-- Footer -->
-    <footer id="contact">
-        <div class="social-links">
-            <a href="#" target="_blank">Instagram</a>
-            <a href="#" target="_blank">Facebook</a>
+    <!-- Swarm Removal Banner -->
+    <section id="swarm" class="swarm-banner">
+      <div>
+        <h2>🐝 Professional Honeybee Swarm Removal</h2>
+        <p>Spotted a wild honeybee swarm? Our Hilo Hive & Flame apiary team provides safe, humane capture and relocation services across Mountain View, Fern Forest, and Volcano.</p>
+      </div>
+      <div>
+        <a href="tel:8084817982" class="btn btn-emergency">Call (808) 481-7982</a>
+      </div>
+    </section>
+
+    <!-- Contact & Location Footer -->
+    <section id="contact" class="footer-grid">
+      <div class="footer-card">
+        <h2>📍 Location & Pickup</h2>
+        <p><strong>Mountain View / Fern Forest, Hawaii</strong></p>
+        <p>Local farm pickup available by appointment for eggs, honey, candles, lotions, and hatchlings.</p>
+      </div>
+
+      <div class="footer-card">
+        <h2>📬 Get in Touch</h2>
+        <p>Call, text, or email us to check daily egg harvests or inquire about Hilo Hive & Flame goods.</p>
+        <p style="font-size: 1.4rem; font-weight: 700; color: var(--primary); margin: 1rem 0;">(808) 481-7982</p>
+        <div style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
+          <a href="tel:8084817982" class="btn">Call / Text Us</a>
+          <a href="mailto:info@polygrovefarms.com" class="btn" style="background: var(--primary);">Email Us</a>
         </div>
-        <p>&copy; 2026 Polygrove Farms. All rights reserved. Fern Forest, Hawaii.</p>
-    </footer>
+      </div>
+    </section>
+
+  </div>
 
 </body>
-</html>  
+</html>   
