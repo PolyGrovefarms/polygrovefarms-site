@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Polygrove Farms | Hilo Hive & Flame | Big Island, HI</title>
+  <title>Polygrove Farms | Hilo Hive & Flame | Fern Forest, HI</title>
 
   <!-- Premium Editorial Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -75,31 +75,54 @@
     /* Hero Section */
     .hero {
       background: linear-gradient(180deg, #ffffff 0%, var(--bg) 100%);
-      padding: 4rem 1.5rem 3rem;
+      padding: 4.5rem 1.5rem 3.5rem;
       text-align: center;
       border-bottom: 1px solid var(--border);
     }
 
-    /* Cleaned up logo section - NO white block background */
-    .hero-logo-container {
+    /* Embedded Vector Brand Crest */
+    .brand-crest {
       display: inline-block;
-      max-width: 320px;
-      width: 100%;
-      margin-bottom: 1.5rem;
+      border: 2px solid var(--primary);
+      outline: 1px solid var(--gold);
+      outline-offset: -6px;
+      padding: 2rem 3.5rem;
+      border-radius: 20px;
+      margin-bottom: 2rem;
+      background: #ffffff;
+      box-shadow: 0 12px 30px rgba(21, 46, 34, 0.08);
+      position: relative;
     }
 
-    .hero-logo-container img {
-      width: 100%;
-      height: auto;
-      object-fit: contain;
-      background: transparent !important;
-      filter: drop-shadow(0px 8px 16px rgba(21, 46, 34, 0.12));
+    .brand-crest-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.8rem;
+      font-weight: 700;
+      color: var(--primary);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      line-height: 1;
+    }
+
+    .brand-crest-divider {
+      height: 2px;
+      width: 50px;
+      background: var(--gold);
+      margin: 0.75rem auto;
+    }
+
+    .brand-crest-sub {
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.3em;
+      color: var(--gold);
+      text-transform: uppercase;
     }
 
     .hero-subtitle {
       font-size: 1.25rem;
       color: var(--text-muted);
-      max-width: 680px;
+      max-width: 720px;
       margin: 0 auto 1.75rem;
       font-weight: 300;
     }
@@ -190,7 +213,6 @@
       overflow: hidden;
     }
 
-    /* Subtle SVG Honeycomb Pattern Background */
     .brand-banner::before {
       content: "";
       position: absolute;
@@ -260,7 +282,7 @@
     /* Product Grid */
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 2rem;
     }
 
@@ -526,6 +548,8 @@
       .brand-banner { flex-direction: column; text-align: center; padding: 2.5rem 1.5rem; }
       .swarm-banner { grid-template-columns: 1fr; text-align: center; }
       .story-section, .order-section { padding: 2rem 1.5rem; }
+      .brand-crest { padding: 1.5rem 2rem; }
+      .brand-crest-title { font-size: 2.1rem; }
     }
   </style>
 </head>
@@ -538,7 +562,7 @@
       <li><a href="#story">Our Story</a></li>
       <li><a href="#eggs">Eggs</a></li>
       <li><a href="#apiary">Hilo Hive & Flame</a></li>
-      <li><a href="#chicks">Live Hatchlings</a></li>
+      <li><a href="#hatchlings">Live Hatchlings</a></li>
       <li><a href="#order">Reserve Order</a></li>
       <li><a href="#swarm">Swarm Removal</a></li>
       <li><a href="#contact">Contact</a></li>
@@ -547,10 +571,13 @@
 
   <!-- Hero Banner -->
   <section class="hero">
-    <div class="hero-logo-container">
-      <img src="polygrove-logo.png" alt="Polygrove Farms Logo">
+    <div class="brand-crest">
+      <div class="brand-crest-title">Polygrove Farms</div>
+      <div class="brand-crest-divider"></div>
+      <div class="brand-crest-sub">Fern Forest • Big Island</div>
     </div>
-    <p class="hero-subtitle">Pasture-Raised Poultry, Hilo Hive & Flame Apiary Goods, and Live Hatchlings in Mountain View, Hawaii</p>
+    
+    <p class="hero-subtitle">Pasture-Raised Poultry, Heritage Turkeys, Guinea Fowl, Hilo Hive & Flame Goods, and Live Hatchlings in Fern Forest, Hawaii</p>
     
     <div class="status-bar">
       <span class="pulse-dot"></span> Call / Text Direct: (808) 481-7982
@@ -562,20 +589,20 @@
     <!-- Our Story -->
     <section id="story" class="story-section">
       <h2>🌿 Our Story & Homestead Mission</h2>
-      <p>Nestled on the lush slopes of the Big Island in Hawaii, <strong>Polygrove Farms</strong> is an integrated homestead and farm dedicated to sustainable agriculture, ethical animal husbandry, and thriving apiaries.</p>
-      <p>Our pasture-raised flock enjoys fresh tropical air, natural foraging, and exceptional care—producing rich chicken and duck eggs daily. Alongside our poultry, we tend healthy honeybee colonies under our artisan line, <strong>Hilo Hive & Flame</strong>, crafting raw island honey, hand-poured beeswax candles, and natural skincare. We are passionate about supporting our local community through sustainable farming and humane bee removal services.</p>
+      <p>Located in the lush rainforest community of <strong>Fern Forest, Hawaii</strong>, <strong>Polygrove Farms</strong> is an integrated homestead and farm dedicated to sustainable agriculture, ethical pasture management, and thriving apiaries.</p>
+      <p>Our diverse pasture-raised flock includes chickens, Runner & Campbell ducks, heritage turkeys, and alert guinea fowl—all thriving in the crisp Big Island rainforest air. Alongside our poultry, we tend honeybee colonies under our artisan brand, <strong>Hilo Hive & Flame</strong>, offering raw island honey, hand-poured beeswax candles, and natural body care, while serving our neighbors with humane bee swarm relocation.</p>
     </section>
 
     <!-- Pasture-Raised Eggs -->
     <section id="eggs">
       <h2 class="section-title">🥚 Pasture-Raised Eggs</h2>
-      <p class="section-subtitle-text">Gathered daily from our free-ranging flock on the Big Island.</p>
+      <p class="section-subtitle-text">Gathered daily from our free-ranging flock in Fern Forest, HI.</p>
       <div class="grid">
         <div class="card">
           <div>
             <span class="badge">Daily Harvest</span>
             <h3>Fresh Eating Eggs</h3>
-            <p>Hand-gathered daily from our pasture-raised flock. Superior golden yolks and exceptional natural taste.</p>
+            <p>Hand-gathered daily from our pasture-raised laying flock. Vibrant golden yolks and superior taste.</p>
           </div>
           <div class="card-footer">
             <span class="price-label">Price</span>
@@ -586,8 +613,8 @@
         <div class="card">
           <div>
             <span class="badge">Pasture-Raised</span>
-            <h3>Pasture-Raised Duck Eggs</h3>
-            <p>Rich, extra-large eggs with thick creamy yolks. Highly favored for baking and culinary dishes.</p>
+            <h3>Pasture Duck Eggs</h3>
+            <p>Rich, extra-large eggs with thick creamy yolks from our Runner and Campbell ducks. Outstanding for culinary baking.</p>
           </div>
           <div class="card-footer">
             <span class="price-label">Price</span>
@@ -609,7 +636,7 @@
         </div>
         <div class="brand-info">
           <h2>Crafted by Nature. Lit with Love.</h2>
-          <p>Small-batch raw honey, hand-poured beeswax candles, and natural skincare harvested directly from our hives on the Big Island.</p>
+          <p>Small-batch raw honey, hand-poured beeswax candles, and natural skincare harvested directly from our hives in Fern Forest, Big Island.</p>
         </div>
       </div>
 
@@ -618,7 +645,7 @@
           <div>
             <span class="badge badge-honey">Raw & Unfiltered</span>
             <h3>Pure Island Honey</h3>
-            <p>100% pure, small-batch wildflower honey harvested directly from our Hilo Hive & Flame apiaries in Hawaii.</p>
+            <p>100% pure wildflower honey harvested directly from our Hilo Hive & Flame rainforest apiaries.</p>
           </div>
           <div class="card-footer">
             <span class="price-label">Harvest</span>
@@ -630,7 +657,7 @@
           <div>
             <span class="badge badge-honey">Hand-Poured</span>
             <h3>Handcrafted Beeswax Candles</h3>
-            <p>Clean-burning, golden candles hand-poured with pure, natural beeswax harvested from our hives.</p>
+            <p>Clean-burning, golden candles hand-poured with pure, natural beeswax from our hives.</p>
           </div>
           <div class="card-footer">
             <span class="price-label">Small Batch</span>
@@ -642,7 +669,7 @@
           <div>
             <span class="badge badge-honey">Natural Skincare</span>
             <h3>Beeswax & Honey Lotions</h3>
-            <p>Nourishing body creams and lotions formulated with pure island honey and protective natural beeswax.</p>
+            <p>Nourishing body lotions formulated with pure island honey and protective natural beeswax.</p>
           </div>
           <div class="card-footer">
             <span class="price-label">Handcrafted</span>
@@ -654,20 +681,20 @@
       <!-- Beekeeper Bio Section -->
       <div class="beekeeper-card">
         <h3>🐝 Natural Hive Care & Swarm Protection</h3>
-        <p>At Hilo Hive & Flame, our bees are cared for using chemical-free, natural beekeeping standards. Every jar of honey and block of beeswax comes from colonies that forage freely across native Big Island flora. When local swarms need relocating, we safely rescue and rehome them in our apiary.</p>
+        <p>At Hilo Hive & Flame, our bees are managed with chemical-free, natural beekeeping standards. Every jar of honey and block of beeswax comes from colonies foraging freely across native Big Island rainforest flora. When wild swarms appear, we safely rescue and rehome them in our apiary.</p>
       </div>
     </section>
 
-    <!-- Live Birds -->
-    <section id="chicks">
-      <h2 class="section-title">🐥 Live Hatchlings</h2>
-      <p class="section-subtitle-text">Healthy day-old chicks and ducklings raised on clean pasture protocols.</p>
+    <!-- Live Hatchlings Section -->
+    <section id="hatchlings">
+      <h2 class="section-title">🐥 Live Hatchlings & Poultry</h2>
+      <p class="section-subtitle-text">Healthy chicks, ducklings, turkey poults, and guinea keets raised on organic, unmedicated feeding protocols.</p>
       <div class="grid">
         <div class="card">
           <div>
-            <span class="badge">Seasonal Batch</span>
+            <span class="badge">Day-Old Chicks</span>
             <h3>Day-Old Chicks</h3>
-            <p>Vibrant, healthy chicks from quality heritage and laying breeds.</p>
+            <p>Vibrant, healthy chicks from quality laying and heritage chicken breeds.</p>
           </div>
           <div class="card-footer">
             <span class="price-label">Availability</span>
@@ -679,7 +706,31 @@
           <div>
             <span class="badge">Pasture Breeds</span>
             <h3>Ducklings</h3>
-            <p>Healthy, energetic ducklings raised in our pasture breeding program.</p>
+            <p>Energetic Runner and Campbell ducklings raised in our pasture breeding program.</p>
+          </div>
+          <div class="card-footer">
+            <span class="price-label">Availability</span>
+            <span class="price">Seasonal</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <div>
+            <span class="badge">Heritage & Broad Breasted</span>
+            <h3>Turkey Poults</h3>
+            <p>Strong, healthy day-old turkey poults raised for homesteading and pasture feeding.</p>
+          </div>
+          <div class="card-footer">
+            <span class="price-label">Availability</span>
+            <span class="price">Seasonal</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <div>
+            <span class="badge">Natural Pest Control</span>
+            <h3>Guinea Fowl Keets</h3>
+            <p>Alert, hardy guinea keets—ideal for natural tick, bug, and orchard pest management on your property.</p>
           </div>
           <div class="card-footer">
             <span class="price-label">Availability</span>
@@ -692,7 +743,7 @@
     <!-- Interactive Order Reservation Form -->
     <section id="order" class="order-section">
       <h2>📦 Place or Reserve an Order</h2>
-      <p>Submit your request below and we will contact you directly via call or text to confirm daily stock and pickup arrangements.</p>
+      <p>Submit your request below and we will contact you directly via call or text to confirm daily stock and Fern Forest farm pickup arrangements.</p>
 
       <form action="mailto:info@polygrovefarms.com" method="post" enctype="text/plain">
         <div class="form-grid">
@@ -715,12 +766,14 @@
               <option value="Handcrafted Beeswax Candles">Handcrafted Beeswax Candles</option>
               <option value="Beeswax & Honey Lotions">Beeswax & Honey Lotions</option>
               <option value="Live Chicks / Ducklings">Live Chicks / Ducklings</option>
+              <option value="Turkey Poults">Turkey Poults</option>
+              <option value="Guinea Fowl Keets">Guinea Fowl Keets</option>
             </select>
           </div>
 
           <div class="form-group">
             <label for="quantity">Quantity Desired</label>
-            <input type="text" id="quantity" name="Quantity" placeholder="e.g. 2 dozen / 1 jar" required>
+            <input type="text" id="quantity" name="Quantity" placeholder="e.g. 2 dozen / 4 keets" required>
           </div>
         </div>
 
@@ -741,20 +794,20 @@
       <div class="testimonials-grid">
         <div class="testimonial-card">
           <p>"The eggs from Polygrove Farms have the richest, deepest orange yolks I've ever seen on the Big Island. Unbeatable quality!"</p>
-          <div class="testimonial-author">Local Customer Review</div>
-          <div class="testimonial-location">Mountain View, HI</div>
+          <div class="testimonial-author">Colleen</div>
+          <div class="testimonial-location">Mt. View, HI</div>
         </div>
 
         <div class="testimonial-card">
           <p>"Hilo Hive & Flame candles burn so clean and smell incredible naturally. Knowing the honey and wax come right from local hives makes it even better."</p>
-          <div class="testimonial-author">Local Customer Review</div>
-          <div class="testimonial-location">Volcano, HI</div>
+          <div class="testimonial-author">Jennie</div>
+          <div class="testimonial-location">Las Vegas, NV</div>
         </div>
 
         <div class="testimonial-card">
-          <p>"Prompt, professional bee swarm relocation! They safely rescued a wild swarm on our property and gave them a permanent home."</p>
-          <div class="testimonial-author">Community Member</div>
-          <div class="testimonial-location">Fern Forest, HI</div>
+          <p>"The honey is absolutely amazing! Pure, rich rainforest flavor that you just can't get anywhere else."</p>
+          <div class="testimonial-author">Shenell</div>
+          <div class="testimonial-location">Las Vegas, NV</div>
         </div>
       </div>
     </section>
@@ -773,7 +826,7 @@
     <section id="swarm" class="swarm-banner">
       <div>
         <h2>🐝 Professional Honeybee Swarm Removal</h2>
-        <p>Spotted a wild honeybee swarm? Our Hilo Hive & Flame apiary team provides safe, humane capture and relocation services across Mountain View, Fern Forest, and Volcano.</p>
+        <p>Spotted a wild honeybee swarm? Our Hilo Hive & Flame apiary team provides safe, humane capture and relocation services across Fern Forest, Volcano, and surrounding Big Island areas.</p>
       </div>
       <div>
         <a href="tel:8084817982" class="btn btn-emergency">Call (808) 481-7982</a>
@@ -784,13 +837,13 @@
     <section id="contact" class="footer-grid">
       <div class="footer-card">
         <h2>📍 Location & Pickup</h2>
-        <p><strong>Mountain View / Fern Forest, Hawaii</strong></p>
-        <p>Local farm pickup available by appointment for eggs, honey, candles, lotions, and hatchlings.</p>
+        <p><strong>Fern Forest, Hawaii</strong></p>
+        <p>Local farm pickup available by appointment for eggs, honey, candles, lotions, turkey poults, guinea keets, chicks, and ducklings.</p>
       </div>
 
       <div class="footer-card">
         <h2>📬 Get in Touch</h2>
-        <p>Call, text, or email us to check daily egg harvests or inquire about Hilo Hive & Flame goods.</p>
+        <p>Call, text, or email us to check daily egg harvests or inquire about Hilo Hive & Flame goods and live hatchlings.</p>
         <p style="font-size: 1.4rem; font-weight: 700; color: var(--primary); margin: 1rem 0;">(808) 481-7982</p>
         <div style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
           <a href="tel:8084817982" class="btn">Call / Text Us</a>
@@ -802,4 +855,4 @@
   </div>
 
 </body>
-</html>   
+</html>
