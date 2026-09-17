@@ -33,7 +33,6 @@
       line-height: 1.7;
     }
 
-    /* Sticky Navigation Header */
     nav {
       position: sticky;
       top: 0;
@@ -97,7 +96,6 @@
       fill: currentColor;
     }
 
-    /* Mobile nav toggle */
     .nav-toggle {
       display: none;
       background: none;
@@ -123,7 +121,6 @@
     .nav-toggle.open span:nth-child(2) { opacity: 0; }
     .nav-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
-    /* Hero Section */
     .hero {
       background: linear-gradient(180deg, #ffffff 0%, var(--bg) 100%);
       padding: 4.5rem 1.5rem 3.5rem;
@@ -131,7 +128,6 @@
       border-bottom: 1px solid var(--border);
     }
 
-    /* Embedded Vector Brand Crest */
     .brand-crest {
       display: inline-block;
       border: 2px solid var(--primary);
@@ -199,14 +195,12 @@
       box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.25);
     }
 
-    /* Main Container */
     .container {
       max-width: 1080px;
       margin: 0 auto;
       padding: 4rem 1.5rem;
     }
 
-    /* Editorial Story Card */
     .story-section {
       background: var(--card-bg);
       border: 1px solid var(--border);
@@ -229,7 +223,6 @@
       margin-bottom: 1.25rem;
     }
 
-    /* Section Titles */
     .section-title {
       font-family: 'Cormorant Garamond', serif;
       font-size: 2.4rem;
@@ -248,7 +241,6 @@
       margin-bottom: 2rem;
     }
 
-    /* High-End Hilo Hive Banner */
     .brand-banner {
       background: radial-gradient(circle at 80% 20%, #1e293b 0%, #090d16 100%);
       color: white;
@@ -330,7 +322,6 @@
       max-width: 580px;
     }
 
-    /* Product Grid */
     .grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -397,7 +388,35 @@
     .price-label { font-size: 0.8rem; text-transform: uppercase; color: var(--text-muted); }
     .price { font-size: 1.4rem; font-weight: 700; color: var(--gold); }
 
-    /* Beekeeper Bio Card */
+    /* Stock status badges — change the TEXT inside these on any card to update messaging */
+    .stock-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.78rem;
+      font-weight: 700;
+      padding: 0.35rem 0.8rem;
+      border-radius: 50px;
+      margin-top: 0.9rem;
+    }
+
+    .stock-badge::before {
+      content: "";
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .stock-badge.available { background: #f0fdf4; color: #166534; }
+    .stock-badge.available::before { background: #22c55e; }
+
+    .stock-badge.limited { background: #fffbeb; color: #92400e; }
+    .stock-badge.limited::before { background: #f59e0b; }
+
+    .stock-badge.soldout { background: #fef2f2; color: #b91c1c; }
+    .stock-badge.soldout::before { background: #ef4444; }
+
     .beekeeper-card {
       background: #fefce8;
       border: 1px solid #fde047;
@@ -418,7 +437,6 @@
       font-size: 1.05rem;
     }
 
-    /* Order Form Section */
     .order-section {
       background: #ffffff;
       border: 2px solid var(--primary);
@@ -476,7 +494,6 @@
       box-shadow: 0 0 0 3px rgba(197, 155, 39, 0.15);
     }
 
-    /* Honeypot field - hidden from real visitors, trips up spam bots */
     .hp-field {
       position: absolute;
       left: -9999px;
@@ -502,7 +519,6 @@
       transform: none !important;
     }
 
-    /* Testimonials Section */
     .testimonials-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -537,7 +553,6 @@
       color: var(--text-muted);
     }
 
-    /* Emergency Swarm Removal Banner */
     .swarm-banner {
       background: linear-gradient(135deg, #152e22 0%, #0b1a13 100%);
       color: white;
@@ -558,7 +573,6 @@
       margin-bottom: 0.5rem;
     }
 
-    /* Support / Feed Section */
     .donate-banner {
       background: #fffbeb;
       border: 2px dashed #fef08a;
@@ -575,7 +589,6 @@
       margin-bottom: 0.75rem;
     }
 
-    /* Buttons */
     .btn {
       display: inline-block;
       background: var(--gold);
@@ -625,7 +638,6 @@
       fill: currentColor;
     }
 
-    /* Contact & Location Footer Box */
     .footer-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -648,7 +660,6 @@
       margin-bottom: 1rem;
     }
 
-    /* ===== Mailing List Popup ===== */
     .mailing-overlay {
       position: fixed;
       inset: 0;
@@ -752,7 +763,6 @@
 
     .mailing-fineprint a { color: var(--primary); }
 
-    /* Small persistent tab to reopen the signup after it's dismissed */
     .mailing-tab {
       position: fixed;
       right: 0;
@@ -925,6 +935,7 @@
             <span class="badge">Daily Harvest</span>
             <h3>Fresh Eating Eggs</h3>
             <p>Hand-gathered daily from our pasture-raised laying flock. Vibrant golden yolks and superior taste.</p>
+            <span class="stock-badge available">Available Now</span>
           </div>
           <div class="card-footer">
             <span class="price-label">Price</span>
@@ -937,6 +948,7 @@
             <span class="badge">Pasture-Raised</span>
             <h3>Pasture Duck Eggs</h3>
             <p>Rich, extra-large eggs with thick creamy yolks from our Runner ducks. Outstanding for culinary baking.</p>
+            <span class="stock-badge available">Available Now</span>
           </div>
           <div class="card-footer">
             <span class="price-label">Price</span>
@@ -949,6 +961,7 @@
             <span class="badge">Fresh Harvest</span>
             <h3>Farm-Raised Tilapia</h3>
             <p>Clean, fresh-harvested tilapia raised locally with pristine water and sustainable management.</p>
+            <span class="stock-badge limited">While Supplies Last</span>
           </div>
           <div class="card-footer">
             <span class="price-label">Availability</span>
@@ -968,6 +981,7 @@
             <span class="badge">Orchard Fresh</span>
             <h3>Island Fruits</h3>
             <p>Seasonal, tree-ripened tropical fruits grown organically in the rich volcanic rainforest soil.</p>
+            <span class="stock-badge limited">While Supplies Last</span>
           </div>
           <div class="card-footer">
             <span class="price-label">Season</span>
@@ -980,6 +994,7 @@
             <span class="badge">Nursery Starts</span>
             <h3>Plants & Herbs</h3>
             <p>Climate-adapted starts, culinary herbs, and specialty greens cultivated for high-elevation growing.</p>
+            <span class="stock-badge available">Available Now</span>
           </div>
           <div class="card-footer">
             <span class="price-label">Availability</span>
@@ -992,6 +1007,7 @@
             <span class="badge">Homestead Stock</span>
             <h3>Fruit Trees</h3>
             <p>Healthy, robust fruit and landscape trees ready to transplant into your Big Island property.</p>
+            <span class="stock-badge available">Available Now</span>
           </div>
           <div class="card-footer">
             <span class="price-label">Availability</span>
@@ -1023,6 +1039,7 @@
             <span class="badge badge-honey">Raw & Unfiltered</span>
             <h3>Pure Island Honey</h3>
             <p>100% pure wildflower honey harvested directly from our Hilo Hive & Flame rainforest apiaries.</p>
+            <span class="stock-badge limited">Available Now — While Supplies Last</span>
           </div>
           <div class="card-footer">
             <span class="price-label">Harvest</span>
@@ -1035,6 +1052,7 @@
             <span class="badge badge-honey">Hand-Poured</span>
             <h3>Handcrafted Beeswax Candles</h3>
             <p>Clean-burning, golden candles hand-poured with pure, natural beeswax from our hives.</p>
+            <span class="stock-badge limited">Available Now — While Supplies Last</span>
           </div>
           <div class="card-footer">
             <span class="price-label">Small Batch</span>
@@ -1047,6 +1065,7 @@
             <span class="badge badge-honey">Natural Skincare</span>
             <h3>Beeswax & Honey Lotions</h3>
             <p>Nourishing body lotions formulated with pure island honey and protective natural beeswax.</p>
+            <span class="stock-badge limited">Available Now — While Supplies Last</span>
           </div>
           <div class="card-footer">
             <span class="price-label">Handcrafted</span>
@@ -1072,6 +1091,7 @@
             <span class="badge">Chicken Breeds</span>
             <h3>Chicks & Laying Breeds</h3>
             <p>Featuring Jersey Giants, Rhode Island Reds, and Ermine Ameraucanas raised with natural care.</p>
+            <span class="stock-badge limited">Seasonal — Check Availability</span>
           </div>
           <div class="card-footer">
             <span class="price-label">Availability</span>
@@ -1084,6 +1104,7 @@
             <span class="badge">Pasture Breeds</span>
             <h3>Ducklings</h3>
             <p>Energetic Runner ducklings raised in our pasture breeding program.</p>
+            <span class="stock-badge limited">Seasonal — Check Availability</span>
           </div>
           <div class="card-footer">
             <span class="price-label">Availability</span>
@@ -1096,6 +1117,7 @@
             <span class="badge">Turkey Varieties</span>
             <h3>Turkey Poults</h3>
             <p>Broad Breasted White and Heritage Turkey poults raised for homesteading and pasture feeding.</p>
+            <span class="stock-badge limited">Seasonal — Check Availability</span>
           </div>
           <div class="card-footer">
             <span class="price-label">Availability</span>
@@ -1108,6 +1130,7 @@
             <span class="badge">Natural Pest Control</span>
             <h3>Guinea Fowl Keets</h3>
             <p>Alert, hardy guinea keets—ideal for natural tick, bug, and orchard pest management on your property.</p>
+            <span class="stock-badge limited">Seasonal — Check Availability</span>
           </div>
           <div class="card-footer">
             <span class="price-label">Availability</span>
@@ -1267,7 +1290,7 @@
       <div class="mailing-eyebrow">JOIN THE HOMESTEAD LIST</div>
       <h2>Fresh Deals & What's In Stock</h2>
       <p>Get a heads up when eggs, honey, hatchlings, and Hilo Hive & Flame goods are ready — plus first access to seasonal specials.</p>
-      <form class="mailing-form" id="mailingForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+      <form class="mailing-form" id="mailingForm" action="https://formspree.io/f/xaenyakp" method="POST">
         <div class="hp-field" aria-hidden="true">
           <label for="mailingWebsite">Leave this field blank</label>
           <input type="text" id="mailingWebsite" name="_gotcha" tabindex="-1" autocomplete="off">
@@ -1284,7 +1307,6 @@
   <button class="mailing-tab" id="mailingTab">📬 Join Our List</button>
 
   <script>
-    // ===== Mobile nav toggle =====
     const navToggle = document.getElementById('navToggle');
     const navLinks = document.getElementById('navLinks');
     const navOverlay = document.getElementById('navOverlay');
@@ -1307,7 +1329,6 @@
     navOverlay.addEventListener('click', closeNav);
     navLinks.querySelectorAll('a').forEach(link => link.addEventListener('click', closeNav));
 
-    // ===== Secure form submission (AJAX, no page reload, honeypot spam check) =====
     function wireSecureForm(formId, statusId, btnId, successMessage) {
       const form = document.getElementById(formId);
       const status = document.getElementById(statusId);
@@ -1316,7 +1337,6 @@
       form.addEventListener('submit', async function (e) {
         e.preventDefault();
 
-        // Honeypot check: if the hidden field got filled in, it's a bot — silently drop it
         const honeypot = form.querySelector('input[name="_gotcha"]');
         if (honeypot && honeypot.value) {
           status.textContent = 'Thank you!';
@@ -1359,7 +1379,6 @@
     wireSecureForm('orderForm', 'orderStatus', 'orderSubmitBtn', "Reservation received! We'll call or text you shortly.");
     wireSecureForm('mailingForm', 'mailingStatus', 'mailingSubmitBtn', "You're on the list! 🐝");
 
-    // ===== Mailing list popup logic =====
     const mailingOverlay = document.getElementById('mailingOverlay');
     const mailingClose = document.getElementById('mailingClose');
     const mailingTab = document.getElementById('mailingTab');
@@ -1384,7 +1403,6 @@
     });
     mailingTab.addEventListener('click', showMailingPopup);
 
-    // On success, don't nag again
     document.getElementById('mailingForm').addEventListener('submit', () => {
       try { localStorage.setItem(STORAGE_KEY, 'subscribed'); } catch (e) {}
     });
@@ -1393,13 +1411,10 @@
       let dismissed = null;
       try { dismissed = localStorage.getItem(STORAGE_KEY); } catch (e) {}
 
-      // Show the tab always as a quiet way back in; only auto-open the modal
-      // if the visitor hasn't dismissed or subscribed before.
       mailingTab.classList.add('visible');
 
       if (dismissed === 'subscribed') return;
 
-      // Re-show to a dismissed (not subscribed) visitor after 7 days
       if (dismissed) {
         const daysSince = (Date.now() - Number(dismissed)) / (1000 * 60 * 60 * 24);
         if (daysSince < 7) return;
