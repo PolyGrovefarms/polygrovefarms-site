@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -97,6 +96,32 @@
       height: 16px;
       fill: currentColor;
     }
+
+    /* Mobile nav toggle */
+    .nav-toggle {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      width: 40px;
+      height: 40px;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .nav-toggle span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--primary);
+      transition: all 0.25s ease;
+    }
+
+    .nav-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-toggle.open span:nth-child(2) { opacity: 0; }
+    .nav-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
     /* Hero Section */
     .hero {
@@ -451,6 +476,32 @@
       box-shadow: 0 0 0 3px rgba(197, 155, 39, 0.15);
     }
 
+    /* Honeypot field - hidden from real visitors, trips up spam bots */
+    .hp-field {
+      position: absolute;
+      left: -9999px;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+    }
+
+    .form-status {
+      text-align: center;
+      margin-top: 1.25rem;
+      font-weight: 600;
+      font-size: 0.95rem;
+      display: none;
+    }
+
+    .form-status.success { display: block; color: #166534; }
+    .form-status.error { display: block; color: #b91c1c; }
+
+    .btn[disabled] {
+      opacity: 0.6;
+      cursor: not-allowed;
+      transform: none !important;
+    }
+
     /* Testimonials Section */
     .testimonials-grid {
       display: grid;
@@ -548,7 +599,7 @@
     .btn-emergency:hover { background: #b91c1c; }
     .btn-venmo { background: #008cff; }
     .btn-venmo:hover { background: #0070cc; }
-    
+
     .btn-social-btn {
       display: inline-flex;
       align-items: center;
@@ -562,7 +613,7 @@
       font-size: 0.95rem;
       transition: all 0.2s;
     }
-    
+
     .btn-social-btn:hover {
       background: var(--primary-accent);
       transform: translateY(-2px);
@@ -597,13 +648,211 @@
       margin-bottom: 1rem;
     }
 
+    /* ===== Mailing List Popup ===== */
+    .mailing-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 23, 18, 0.55);
+      backdrop-filter: blur(3px);
+      z-index: 2000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 1.25rem;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .mailing-overlay.visible {
+      display: flex;
+      opacity: 1;
+    }
+
+    .mailing-modal {
+      background: var(--bg);
+      border-radius: 24px;
+      max-width: 460px;
+      width: 100%;
+      padding: 2.75rem 2.25rem;
+      position: relative;
+      box-shadow: 0 30px 60px rgba(0,0,0,0.3);
+      border: 1px solid var(--border);
+      transform: translateY(12px) scale(0.98);
+      transition: transform 0.3s ease;
+      text-align: center;
+    }
+
+    .mailing-overlay.visible .mailing-modal {
+      transform: translateY(0) scale(1);
+    }
+
+    .mailing-close {
+      position: absolute;
+      top: 1rem;
+      right: 1.1rem;
+      background: none;
+      border: none;
+      font-size: 1.4rem;
+      line-height: 1;
+      color: var(--text-muted);
+      cursor: pointer;
+      padding: 0.4rem;
+    }
+
+    .mailing-close:hover { color: var(--text); }
+
+    .mailing-eyebrow {
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      color: var(--gold);
+      margin-bottom: 0.75rem;
+    }
+
+    .mailing-modal h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2rem;
+      color: var(--primary);
+      margin-bottom: 0.6rem;
+      line-height: 1.15;
+    }
+
+    .mailing-modal p {
+      color: var(--text-muted);
+      font-size: 0.98rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .mailing-form {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .mailing-form input[type="email"] {
+      padding: 0.9rem 1.1rem;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      font-family: inherit;
+      font-size: 1rem;
+      text-align: center;
+    }
+
+    .mailing-form input[type="email"]:focus {
+      outline: none;
+      border-color: var(--gold);
+      box-shadow: 0 0 0 3px rgba(197, 155, 39, 0.15);
+    }
+
+    .mailing-fineprint {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      margin-top: 1rem;
+    }
+
+    .mailing-fineprint a { color: var(--primary); }
+
+    /* Small persistent tab to reopen the signup after it's dismissed */
+    .mailing-tab {
+      position: fixed;
+      right: 0;
+      bottom: 2.5rem;
+      background: var(--primary);
+      color: #fef3c7;
+      border: none;
+      padding: 0.85rem 1.1rem 0.85rem 1.3rem;
+      border-radius: 12px 0 0 12px;
+      font-weight: 600;
+      font-size: 0.85rem;
+      cursor: pointer;
+      z-index: 1500;
+      box-shadow: -4px 4px 16px rgba(0,0,0,0.15);
+      display: none;
+    }
+
+    .mailing-tab.visible { display: block; }
+
     @media (max-width: 768px) {
-      nav { flex-direction: column; gap: 1rem; }
+      nav { padding: 1rem 1.25rem; }
+
+      .nav-toggle { display: flex; }
+
+      .nav-links {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        height: 100vh;
+        width: min(78vw, 320px);
+        background: #ffffff;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        gap: 0;
+        padding: 5.5rem 2rem 2rem;
+        transition: right 0.3s ease;
+        box-shadow: -10px 0 30px rgba(0,0,0,0.1);
+      }
+
+      .nav-links.open { right: 0; }
+
+      .nav-links li { width: 100%; }
+
+      .nav-links a {
+        display: block;
+        padding: 0.9rem 0;
+        font-size: 1.05rem;
+        width: 100%;
+        border-bottom: 1px solid var(--border);
+      }
+
+      .nav-links li:has(.nav-social-icon) {
+        width: auto;
+        display: inline-block;
+        border-bottom: none;
+        margin-top: 1.25rem;
+      }
+
+      .nav-social-icon { width: 40px; height: 40px; }
+
+      .nav-social-row {
+        display: flex;
+        gap: 0.75rem;
+        margin-top: 1.25rem;
+      }
+
+      .nav-overlay {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: rgba(0,0,0,0.35);
+        z-index: 999;
+      }
+
+      .nav-overlay.visible { display: block; }
+
+      .hero { padding: 3rem 1.25rem 2.5rem; }
+      .brand-crest { padding: 1.5rem 2rem; }
+      .brand-crest-title { font-size: 2.1rem; }
+      .hero-subtitle { font-size: 1.05rem; }
+
+      .container { padding: 2.5rem 1.25rem; }
+
       .brand-banner { flex-direction: column; text-align: center; padding: 2.5rem 1.5rem; }
       .swarm-banner { grid-template-columns: 1fr; text-align: center; }
       .story-section, .order-section { padding: 2rem 1.5rem; }
-      .brand-crest { padding: 1.5rem 2rem; }
-      .brand-crest-title { font-size: 2.1rem; }
+
+      .section-title { font-size: 1.9rem; }
+
+      .footer-grid { margin-top: 2.5rem; }
+      .footer-card { padding: 2.25rem 1.5rem; }
+
+      .mailing-modal { padding: 2.25rem 1.5rem; }
+      .mailing-tab { bottom: 1.5rem; font-size: 0.8rem; padding: 0.75rem 0.9rem 0.75rem 1.1rem; }
+    }
+
+    @media (max-width: 420px) {
+      .brand-crest-title { font-size: 1.7rem; letter-spacing: 0.05em; }
+      .status-bar { font-size: 0.85rem; padding: 0.45rem 1rem; }
     }
   </style>
 </head>
@@ -612,7 +861,12 @@
   <!-- Sticky Nav -->
   <nav>
     <a href="#" class="nav-brand">POLYGROVE FARMS</a>
-    <ul class="nav-links">
+
+    <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+
+    <ul class="nav-links" id="navLinks">
       <li><a href="#story">Our Story</a></li>
       <li><a href="#eggs">Eggs & Fish</a></li>
       <li><a href="#produce">Fruits & Plants</a></li>
@@ -622,17 +876,19 @@
       <li><a href="#swarm">Swarm Removal</a></li>
       <li><a href="#contact">Contact</a></li>
       <li>
-        <a href="https://www.facebook.com/profile.php?id=61593930677123" target="_blank" class="nav-social-icon" title="Facebook Page">
-          <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
-        </a>
-      </li>
-      <li>
-        <a href="https://instagram.com/polygrove.farms26" target="_blank" class="nav-social-icon" title="Instagram Profile">
-          <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-        </a>
+        <div class="nav-social-row">
+          <a href="https://www.facebook.com/profile.php?id=61593930677123" target="_blank" class="nav-social-icon" title="Facebook Page">
+            <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+          </a>
+          <a href="https://instagram.com/polygrove.farms26" target="_blank" class="nav-social-icon" title="Instagram Profile">
+            <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          </a>
+        </div>
       </li>
     </ul>
   </nav>
+
+  <div class="nav-overlay" id="navOverlay"></div>
 
   <!-- Hero Banner -->
   <section class="hero">
@@ -641,9 +897,9 @@
       <div class="brand-crest-divider"></div>
       <div class="brand-crest-sub">Fern Forest • Big Island</div>
     </div>
-    
+
     <p class="hero-subtitle">Pasture-Raised Poultry, Farm-Fresh Tilapia, Korean Natural Farming, Island Fruits, Plants & Trees, and Hilo Hive & Flame Goods in Fern Forest, Hawaii</p>
-    
+
     <div class="status-bar">
       <span class="pulse-dot"></span> Call / Text Direct: (808) 481-7982
     </div>
@@ -747,7 +1003,7 @@
 
     <!-- Apiary & Hive Goods: Hilo Hive & Flame -->
     <section id="apiary">
-      
+
       <!-- Premium Hilo Hive & Flame Card Banner -->
       <div class="brand-banner">
         <div class="hive-badge">
@@ -866,7 +1122,13 @@
       <h2>📦 Place or Reserve an Order</h2>
       <p>Submit your request below and we will contact you directly via call or text to confirm daily stock and Fern Forest farm pickup arrangements.</p>
 
-      <form action="mailto:info@polygrovefarms.com" method="post" enctype="text/plain">
+      <form id="orderForm" action="https://formspree.io/f/xoevqyyo" method="POST">
+        <!-- Honeypot spam trap: real visitors never see or fill this in -->
+        <div class="hp-field" aria-hidden="true">
+          <label for="orderWebsite">Leave this field blank</label>
+          <input type="text" id="orderWebsite" name="_gotcha" tabindex="-1" autocomplete="off">
+        </div>
+
         <div class="form-grid">
           <div class="form-group">
             <label for="name">Your Full Name</label>
@@ -875,12 +1137,12 @@
 
           <div class="form-group">
             <label for="phone">Phone Number (Call / Text)</label>
-            <input type="tel" id="phone" name="Phone" placeholder="(808) 000-0000" required>
+            <input type="tel" id="phone" name="Phone" pattern="[0-9()+\-\s]{7,}" placeholder="(808) 000-0000" required>
           </div>
 
           <div class="form-group">
             <label for="item">Primary Item Requested</label>
-            <select id="item" name="Item Requested">
+            <select id="item" name="Item Requested" required>
               <optgroup label="Farm Fresh Eggs & Tilapia">
                 <option value="Fresh Chicken Eggs ($5/dz)">Fresh Chicken Eggs ($5/dz)</option>
                 <option value="Pasture Duck Eggs ($8/dz)">Pasture Duck Eggs ($8/dz)</option>
@@ -920,7 +1182,8 @@
         </div>
 
         <div style="text-align: center;">
-          <button type="submit" class="btn" style="padding: 1rem 3rem; font-size: 1.05rem;">Submit Reservation Request</button>
+          <button type="submit" class="btn" id="orderSubmitBtn" style="padding: 1rem 3rem; font-size: 1.05rem;">Submit Reservation Request</button>
+          <p class="form-status" id="orderStatus"></p>
         </div>
       </form>
     </section>
@@ -996,6 +1259,155 @@
   <footer style="text-align: center; padding: 2.5rem 1rem; border-top: 1px solid var(--border); color: var(--text-muted); font-size: 0.9rem;">
     <p>&copy; 2026 Polygrove Farms & Hilo Hive & Flame. All rights reserved. Grown & crafted with Korean Natural Farming in Fern Forest, Hawaii.</p>
   </footer>
+
+  <!-- Mailing List Popup -->
+  <div class="mailing-overlay" id="mailingOverlay">
+    <div class="mailing-modal">
+      <button class="mailing-close" id="mailingClose" aria-label="Close">&times;</button>
+      <div class="mailing-eyebrow">JOIN THE HOMESTEAD LIST</div>
+      <h2>Fresh Deals & What's In Stock</h2>
+      <p>Get a heads up when eggs, honey, hatchlings, and Hilo Hive & Flame goods are ready — plus first access to seasonal specials.</p>
+      <form class="mailing-form" id="mailingForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+        <div class="hp-field" aria-hidden="true">
+          <label for="mailingWebsite">Leave this field blank</label>
+          <input type="text" id="mailingWebsite" name="_gotcha" tabindex="-1" autocomplete="off">
+        </div>
+        <input type="hidden" name="form-name" value="mailing-list-signup">
+        <input type="email" name="Email" id="mailingEmail" placeholder="you@email.com" required>
+        <button type="submit" class="btn" id="mailingSubmitBtn">Sign Me Up</button>
+        <p class="form-status" id="mailingStatus"></p>
+      </form>
+      <p class="mailing-fineprint">No spam — just farm updates. Unsubscribe anytime.</p>
+    </div>
+  </div>
+
+  <button class="mailing-tab" id="mailingTab">📬 Join Our List</button>
+
+  <script>
+    // ===== Mobile nav toggle =====
+    const navToggle = document.getElementById('navToggle');
+    const navLinks = document.getElementById('navLinks');
+    const navOverlay = document.getElementById('navOverlay');
+
+    function closeNav() {
+      navToggle.classList.remove('open');
+      navToggle.setAttribute('aria-expanded', 'false');
+      navLinks.classList.remove('open');
+      navOverlay.classList.remove('visible');
+    }
+
+    function toggleNav() {
+      const isOpen = navLinks.classList.toggle('open');
+      navToggle.classList.toggle('open', isOpen);
+      navToggle.setAttribute('aria-expanded', String(isOpen));
+      navOverlay.classList.toggle('visible', isOpen);
+    }
+
+    navToggle.addEventListener('click', toggleNav);
+    navOverlay.addEventListener('click', closeNav);
+    navLinks.querySelectorAll('a').forEach(link => link.addEventListener('click', closeNav));
+
+    // ===== Secure form submission (AJAX, no page reload, honeypot spam check) =====
+    function wireSecureForm(formId, statusId, btnId, successMessage) {
+      const form = document.getElementById(formId);
+      const status = document.getElementById(statusId);
+      const btn = document.getElementById(btnId);
+
+      form.addEventListener('submit', async function (e) {
+        e.preventDefault();
+
+        // Honeypot check: if the hidden field got filled in, it's a bot — silently drop it
+        const honeypot = form.querySelector('input[name="_gotcha"]');
+        if (honeypot && honeypot.value) {
+          status.textContent = 'Thank you!';
+          status.className = 'form-status success';
+          form.reset();
+          return;
+        }
+
+        btn.disabled = true;
+        const originalLabel = btn.textContent;
+        btn.textContent = 'Sending...';
+        status.className = 'form-status';
+        status.textContent = '';
+
+        try {
+          const response = await fetch(form.action, {
+            method: 'POST',
+            body: new FormData(form),
+            headers: { 'Accept': 'application/json' }
+          });
+
+          if (response.ok) {
+            status.textContent = successMessage;
+            status.className = 'form-status success';
+            form.reset();
+          } else {
+            status.textContent = "Something didn't go through — please call or text (808) 481-7982 instead.";
+            status.className = 'form-status error';
+          }
+        } catch (err) {
+          status.textContent = "Something didn't go through — please call or text (808) 481-7982 instead.";
+          status.className = 'form-status error';
+        } finally {
+          btn.disabled = false;
+          btn.textContent = originalLabel;
+        }
+      });
+    }
+
+    wireSecureForm('orderForm', 'orderStatus', 'orderSubmitBtn', "Reservation received! We'll call or text you shortly.");
+    wireSecureForm('mailingForm', 'mailingStatus', 'mailingSubmitBtn', "You're on the list! 🐝");
+
+    // ===== Mailing list popup logic =====
+    const mailingOverlay = document.getElementById('mailingOverlay');
+    const mailingClose = document.getElementById('mailingClose');
+    const mailingTab = document.getElementById('mailingTab');
+    const STORAGE_KEY = 'polygrove_mailing_dismissed';
+
+    function showMailingPopup() {
+      mailingOverlay.classList.add('visible');
+      mailingTab.classList.remove('visible');
+    }
+
+    function hideMailingPopup(remember) {
+      mailingOverlay.classList.remove('visible');
+      if (remember) {
+        try { localStorage.setItem(STORAGE_KEY, Date.now().toString()); } catch (e) {}
+      }
+      mailingTab.classList.add('visible');
+    }
+
+    mailingClose.addEventListener('click', () => hideMailingPopup(true));
+    mailingOverlay.addEventListener('click', (e) => {
+      if (e.target === mailingOverlay) hideMailingPopup(true);
+    });
+    mailingTab.addEventListener('click', showMailingPopup);
+
+    // On success, don't nag again
+    document.getElementById('mailingForm').addEventListener('submit', () => {
+      try { localStorage.setItem(STORAGE_KEY, 'subscribed'); } catch (e) {}
+    });
+
+    (function initMailingPopup() {
+      let dismissed = null;
+      try { dismissed = localStorage.getItem(STORAGE_KEY); } catch (e) {}
+
+      // Show the tab always as a quiet way back in; only auto-open the modal
+      // if the visitor hasn't dismissed or subscribed before.
+      mailingTab.classList.add('visible');
+
+      if (dismissed === 'subscribed') return;
+
+      // Re-show to a dismissed (not subscribed) visitor after 7 days
+      if (dismissed) {
+        const daysSince = (Date.now() - Number(dismissed)) / (1000 * 60 * 60 * 24);
+        if (daysSince < 7) return;
+      }
+
+      setTimeout(showMailingPopup, 6000);
+    })();
+  </script>
 
 </body>
 </html>
