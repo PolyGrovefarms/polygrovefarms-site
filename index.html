@@ -303,6 +303,20 @@
       font-weight: 600;
     }
 
+    .hive-badge-image {
+      flex-shrink: 0;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hive-logo-img {
+      width: 230px;
+      max-width: 100%;
+      height: auto;
+      display: block;
+      filter: drop-shadow(0 12px 28px rgba(0,0,0,0.45));
+    }
+
     .brand-info {
       position: relative;
       z-index: 1;
@@ -388,7 +402,30 @@
     .price-label { font-size: 0.8rem; text-transform: uppercase; color: var(--text-muted); }
     .price { font-size: 1.4rem; font-weight: 700; color: var(--gold); }
 
-    /* Stock status badges — change the TEXT inside these on any card to update messaging */
+    .price-options {
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+      align-items: flex-end;
+    }
+
+    .price-option {
+      display: flex;
+      align-items: baseline;
+      gap: 0.6rem;
+    }
+
+    .price-option .size {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .price-option .amount {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--gold);
+    }
+
     .stock-badge {
       display: inline-flex;
       align-items: center;
@@ -878,6 +915,7 @@
 
     <ul class="nav-links" id="navLinks">
       <li><a href="#story">Our Story</a></li>
+      <li><a href="#updates">Farm Updates</a></li>
       <li><a href="#eggs">Eggs & Fish</a></li>
       <li><a href="#produce">Fruits & Plants</a></li>
       <li><a href="#apiary">Hilo Hive & Flame</a></li>
@@ -923,6 +961,16 @@
       <p>Located in the lush rainforest community of <strong>Fern Forest, Hawaii</strong>, <strong>Polygrove Farms</strong> is an integrated homestead and farm dedicated to sustainable agriculture, ethical pasture management, and thriving apiaries.</p>
       <p>We strictly utilize <strong>Korean Natural Farming (KNF)</strong> principles to nurture our high-elevation soil and crops, bypassing chemical inputs in favor of indigenous microorganisms and nutrient-dense, natural amendments. Our diverse pasture-raised flock includes chickens, Runner ducks, heritage turkeys, and alert guinea fowl—all thriving in the crisp Big Island rainforest air alongside our aquaculture and nursery crops.</p>
       <p>Alongside our fresh produce and poultry, we tend honeybee colonies under our artisan brand, <strong>Hilo Hive & Flame</strong>, offering raw island honey, hand-poured beeswax candles, and natural body care, while serving our neighbors with humane bee swarm relocation.</p>
+    </section>
+
+    <!-- Farm Updates: Instagram Feed -->
+    <section id="updates" class="story-section" style="text-align: center;">
+      <h2>📸 Follow the Farm</h2>
+      <p>Daily happenings from pasture to hive — follow along on Instagram for fresh updates and behind-the-scenes moments.</p>
+      <div style="display: flex; justify-content: center; overflow-x: auto; padding-top: 0.5rem;">
+        <!-- SnapWidget -->
+        <iframe src="https://snapwidget.com/embed/1130901" class="snapwidget-widget" allowtransparency="true" frameborder="0" scrolling="no" style="border:none; overflow:hidden; width:480px; height:160px" title="farm"></iframe>
+      </div>
     </section>
 
     <!-- Pasture-Raised Eggs & Tilapia -->
@@ -1022,13 +1070,10 @@
 
       <!-- Premium Hilo Hive & Flame Card Banner -->
       <div class="brand-banner">
-        <div class="hive-badge">
-          <div class="hive-badge-title">Hilo Hive & Flame</div>
-          <div class="hive-badge-divider"></div>
-          <div class="hive-badge-sub">Honey • Candle • Wax</div>
+        <div class="hive-badge-image">
+          <img src="IMG_3739.jpeg" alt="Hilo Hive & Flame — Crafted by Nature, Lit with Love" class="hive-logo-img">
         </div>
         <div class="brand-info">
-          <h2>Crafted by Nature. Lit with Love.</h2>
           <p>Small-batch raw honey, hand-poured beeswax candles, and natural skincare harvested directly from our hives in Fern Forest, Big Island.</p>
         </div>
       </div>
@@ -1042,8 +1087,11 @@
             <span class="stock-badge limited">Available Now — While Supplies Last</span>
           </div>
           <div class="card-footer">
-            <span class="price-label">Harvest</span>
-            <span class="price">Inquire Jars</span>
+            <span class="price-label">Jar Sizes</span>
+            <div class="price-options">
+              <div class="price-option"><span class="size">6 oz</span><span class="amount">$6.00</span></div>
+              <div class="price-option"><span class="size">10 oz</span><span class="amount">$10.00</span></div>
+            </div>
           </div>
         </div>
 
