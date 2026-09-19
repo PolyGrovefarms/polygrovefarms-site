@@ -772,3 +772,757 @@
       background: none;
       border: none;
       font-size: 1.4rem;
+      line-height: 1;
+      color: var(--text-muted);
+      cursor: pointer;
+      padding: 0.4rem;
+    }
+
+    .mailing-close:hover { color: var(--text); }
+
+    .mailing-eyebrow {
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      color: var(--gold);
+      margin-bottom: 0.75rem;
+    }
+
+    .mailing-modal h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2rem;
+      color: var(--primary);
+      margin-bottom: 0.6rem;
+      line-height: 1.15;
+    }
+
+    .mailing-modal p {
+      color: var(--text-muted);
+      font-size: 0.98rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .mailing-form {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .mailing-form input[type="email"] {
+      padding: 0.9rem 1.1rem;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      font-family: inherit;
+      font-size: 1rem;
+      text-align: center;
+    }
+
+    .mailing-form input[type="email"]:focus {
+      outline: none;
+      border-color: var(--gold);
+      box-shadow: 0 0 0 3px rgba(197, 155, 39, 0.15);
+    }
+
+    .mailing-fineprint {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      margin-top: 1rem;
+    }
+
+    .mailing-fineprint a { color: var(--primary); }
+
+    .mailing-tab {
+      position: fixed;
+      right: 0;
+      bottom: 2.5rem;
+      background: var(--primary);
+      color: #fef3c7;
+      border: none;
+      padding: 0.85rem 1.1rem 0.85rem 1.3rem;
+      border-radius: 12px 0 0 12px;
+      font-weight: 600;
+      font-size: 0.85rem;
+      cursor: pointer;
+      z-index: 1500;
+      box-shadow: -4px 4px 16px rgba(0,0,0,0.15);
+      display: none;
+    }
+
+    .mailing-tab.visible { display: block; }
+
+    @media (max-width: 768px) {
+      nav { padding: 1rem 1.25rem; }
+
+      .nav-toggle { display: flex; }
+
+      .nav-links {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        height: 100vh;
+        width: min(78vw, 320px);
+        background: #ffffff;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        gap: 0;
+        padding: 5.5rem 2rem 2rem;
+        transition: right 0.3s ease;
+        box-shadow: -10px 0 30px rgba(0,0,0,0.1);
+      }
+
+      .nav-links.open { right: 0; }
+
+      .nav-links li { width: 100%; }
+
+      .nav-links a {
+        display: block;
+        padding: 0.9rem 0;
+        font-size: 1.05rem;
+        width: 100%;
+        border-bottom: 1px solid var(--border);
+      }
+
+      .nav-links li:has(.nav-social-icon) {
+        width: auto;
+        display: inline-block;
+        border-bottom: none;
+        margin-top: 1.25rem;
+      }
+
+      .nav-social-icon { width: 40px; height: 40px; }
+
+      .nav-social-row {
+        display: flex;
+        gap: 0.75rem;
+        margin-top: 1.25rem;
+      }
+
+      .nav-overlay {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: rgba(0,0,0,0.35);
+        z-index: 999;
+      }
+
+      .nav-overlay.visible { display: block; }
+
+      .hero { padding: 3rem 1.25rem 2.5rem; }
+      .brand-crest { padding: 1.5rem 2rem; }
+      .brand-crest-title { font-size: 2.1rem; }
+      .hero-subtitle { font-size: 1.05rem; }
+
+      .container { padding: 2.5rem 1.25rem; }
+
+      .brand-banner { flex-direction: column; text-align: center; padding: 2.5rem 1.5rem; }
+      .swarm-banner { grid-template-columns: 1fr; text-align: center; }
+      .story-section, .order-section { padding: 2rem 1.5rem; }
+
+      .section-title { font-size: 1.9rem; }
+
+      .footer-grid { margin-top: 2.5rem; }
+      .footer-card { padding: 2.25rem 1.5rem; }
+
+      .mailing-modal { padding: 2.25rem 1.5rem; }
+      .mailing-tab { bottom: 1.5rem; font-size: 0.8rem; padding: 0.75rem 0.9rem 0.75rem 1.1rem; }
+    }
+
+    @media (max-width: 420px) {
+      .brand-crest-title { font-size: 1.7rem; letter-spacing: 0.05em; }
+      .status-bar { font-size: 0.85rem; padding: 0.45rem 1rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Sticky Nav -->
+  <nav>
+    <a href="#" class="nav-brand">POLYGROVE FARMS</a>
+
+    <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#story">Our Story</a></li>
+      <li><a href="#updates">Farm Updates</a></li>
+      <li><a href="#eggs">Eggs & Fish</a></li>
+      <li><a href="#produce">Fruits & Plants</a></li>
+      <li><a href="#apiary">Hilo Hive & Flame</a></li>
+      <li><a href="#hatchlings">Live Hatchlings</a></li>
+      <li><a href="#order">Reserve Order</a></li>
+      <li><a href="#swarm">Swarm Removal</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li>
+        <div class="nav-social-row">
+          <a href="https://www.facebook.com/profile.php?id=61593930677123" target="_blank" class="nav-social-icon" title="Facebook Page">
+            <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+          </a>
+          <a href="https://instagram.com/polygrove.farms26" target="_blank" class="nav-social-icon" title="Instagram Profile">
+            <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          </a>
+          <a href="https://www.youtube.com/@polygrovefarms" target="_blank" rel="noopener" class="nav-social-icon" title="YouTube Channel" aria-label="Polygrove Farms on YouTube">
+            <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+          </a>
+        </div>
+      </li>
+    </ul>
+  </nav>
+
+  <div class="nav-overlay" id="navOverlay"></div>
+
+  <!-- Hero Banner -->
+  <section class="hero">
+    <div class="brand-crest">
+      <div class="brand-crest-title">Polygrove Farms</div>
+      <div class="brand-crest-divider"></div>
+      <div class="brand-crest-sub">Fern Forest • Big Island</div>
+    </div>
+
+    <p class="hero-subtitle">Pasture-Raised Poultry, Farm-Fresh Tilapia, Korean Natural Farming, Island Fruits, Plants & Trees, and Hilo Hive & Flame Goods in Fern Forest, Hawaii</p>
+
+    <div class="status-bar">
+      <span class="pulse-dot"></span> Call / Text Direct: (808) 481-7982
+    </div>
+  </section>
+
+  <div class="container">
+
+    <!-- Our Story -->
+    <section id="story" class="story-section">
+      <h2>🌿 Our Story & Homestead Mission</h2>
+      <p>Located in the lush rainforest community of <strong>Fern Forest, Hawaii</strong>, <strong>Polygrove Farms</strong> is an integrated homestead and farm dedicated to sustainable agriculture, ethical pasture management, and thriving apiaries.</p>
+      <p>We strictly utilize <strong>Korean Natural Farming (KNF)</strong> principles to nurture our high-elevation soil and crops, bypassing chemical inputs in favor of indigenous microorganisms and nutrient-dense, natural amendments. Our diverse pasture-raised flock includes chickens, Runner ducks, heritage turkeys, and alert guinea fowl—all thriving in the crisp Big Island rainforest air alongside our aquaculture and nursery crops.</p>
+      <p>Alongside our fresh produce and poultry, we tend honeybee colonies under our artisan brand, <strong>Hilo Hive & Flame</strong>, offering raw island honey, hand-poured beeswax candles, and natural body care, while serving our neighbors with humane bee swarm relocation.</p>
+    </section>
+
+    <!-- Farm Updates: Instagram Feed -->
+    <section id="updates" class="story-section" style="text-align: center;">
+      <h2>📸 Follow the Farm</h2>
+      <p>Daily happenings from pasture to hive — follow along on Instagram for fresh updates and behind-the-scenes moments.</p>
+      <div style="display: flex; justify-content: center; overflow-x: auto; padding-top: 0.5rem;">
+        <!-- SnapWidget -->
+        <iframe src="https://snapwidget.com/embed/1130901" class="snapwidget-widget" allowtransparency="true" frameborder="0" scrolling="no" style="border:none; overflow:hidden; width:480px; height:160px" title="farm"></iframe>
+      </div>
+    </section>
+
+    <!-- YouTube: Subscribe -->
+    <section id="youtube" class="story-section" style="text-align: center;">
+      <h2>🎥 Watch Us on YouTube</h2>
+      <p>Go behind the scenes on the farm, from the flock to the hives. Subscribe so you never miss a new video!</p>
+      <a href="https://www.youtube.com/@polygrovefarms?sub_confirmation=1" target="_blank" rel="noopener" class="btn btn-youtube">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+        Subscribe on YouTube
+      </a>
+    </section>
+
+    <!-- Pasture-Raised Eggs & Tilapia -->
+    <section id="eggs">
+      <h2 class="section-title">🥚 Pasture-Raised Eggs & Fresh Tilapia</h2>
+      <p class="section-subtitle-text">Harvested fresh daily from our high-elevation rainforest homestead.</p>
+      <div class="grid">
+        <div class="card">
+          <div>
+            <span class="badge">Daily Harvest</span>
+            <h3>Fresh Eating Eggs</h3>
+            <p>Hand-gathered daily from our pasture-raised laying flock. Vibrant golden yolks and superior taste.</p>
+            <span class="stock-badge available">Available Now</span>
+          </div>
+          <div class="card-footer">
+            <span class="price-label">Price</span>
+            <span class="price">$5.00 / doz</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <div>
+            <span class="badge">Pasture-Raised</span>
+            <h3>Pasture Duck Eggs</h3>
+            <p>Rich, extra-large eggs with thick creamy yolks from our Runner ducks. Outstanding for culinary baking.</p>
+            <span class="stock-badge available">Available Now</span>
+          </div>
+          <div class="card-footer">
+            <span class="price-label">Price</span>
+            <span class="price">$8.00 / doz</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <div>
+            <span class="badge">Fresh Harvest</span>
+            <h3>Farm-Raised Tilapia</h3>
+            <p>Clean, fresh-harvested tilapia raised locally with pristine water and sustainable management.</p>
+            <span class="stock-badge limited">While Supplies Last</span>
+          </div>
+          <div class="card-footer">
+            <span class="price-label">Availability</span>
+            <span class="price">Inquire Stock</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Fruits, Plants & Trees Section -->
+    <section id="produce">
+      <h2 class="section-title">🌱 Island Fruits, Plants & Trees</h2>
+      <p class="section-subtitle-text">Nurtured with Korean Natural Farming methods in our Fern Forest nursery and orchard.</p>
+      <div class="grid">
+        <div class="card">
+          <div>
+            <span class="badge">Orchard Fresh</span>
+            <h3>Island Fruits</h3>
+            <p>Seasonal, tree-ripened tropical fruits grown organically in the rich volcanic rainforest soil.</p>
+            <span class="stock-badge limited">While Supplies Last</span>
+          </div>
+          <div class="card-footer">
+            <span class="price-label">Season</span>
+            <span class="price">Seasonal Harvest</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <div>
+            <span class="badge">Nursery Starts</span>
+            <h3>Plants & Herbs</h3>
+            <p>Climate-adapted starts, culinary herbs, and specialty greens cultivated for high-elevation growing.</p>
+            <span class="stock-badge available">Available Now</span>
+          </div>
+          <div class="card-footer">
+            <span class="price-label">Availability</span>
+            <span class="price">Inquire Varieties</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <div>
+            <span class="badge">Homestead Stock</span>
+            <h3>Fruit Trees</h3>
+            <p>Healthy, robust fruit and landscape trees ready to transplant into your Big Island property.</p>
+            <span class="stock-badge available">Available Now</span>
+          </div>
+          <div class="card-footer">
+            <span class="price-label">Availability</span>
+            <span class="price">Inquire Varieties</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Apiary & Hive Goods: Hilo Hive & Flame -->
+    <section id="apiary">
+
+      <!-- Premium Hilo Hive & Flame Card Banner -->
+      <div class="brand-banner">
+        <div class="hive-badge-image">
+          <img src="IMG_3739.jpeg" alt="Hilo Hive & Flame — Crafted by Nature, Lit with Love" class="hive-logo-img">
+        </div>
+        <div class="brand-info">
+          <p>Small-batch raw honey, hand-poured beeswax candles, and natural skincare harvested directly from our hives in Fern Forest, Big Island.</p>
+        </div>
+      </div>
+
+      <div class="grid">
+        <div class="card">
+          <div>
+            <span class="badge badge-honey">Raw & Unfiltered</span>
+            <h3>Pure Island Honey</h3>
+            <p>100% pure wildflower honey harvested directly from our Hilo Hive & Flame rainforest apiaries.</p>
+            <span class="stock-badge limited">Available Now — While Supplies Last</span>
+          </div>
+          <div class="card-footer">
+            <span class="price-label">Jar Sizes</span>
+            <div class="price-options">
+              <div class="price-option">
+                <span class="size">6 oz</span>
+                <span class="amount">$6.00</span>
+                <a href="https://buy.stripe.com/5kQ3cx5Nl0VR19M7Cbgw000" target="_blank" class="pay-now-btn">Pay Now</a>
+              </div>
+              <div class="price-option">
+                <span class="size">10 oz</span>
+                <span class="amount">$10.00</span>
+                <a href="https://buy.stripe.com/28E00lejR9sng4Gf4Dgw001" target="_blank" class="pay-now-btn">Pay Now</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div>
+            <span class="badge badge-honey">Hand-Poured</span>
+            <h3>Handcrafted Beeswax Candles</h3>
+            <p>Clean-burning, golden candles hand-poured with pure, natural beeswax from our hives.</p>
+            <span class="stock-badge limited">Available Now — While Supplies Last</span>
+          </div>
+          <div class="card-footer">
+            <span class="price-label">Small Batch</span>
+            <span class="price">Inquire Availability</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <div>
+            <span class="badge badge-honey">Natural Skincare</span>
+            <h3>Beeswax & Honey Lotions</h3>
+            <p>Nourishing body lotions formulated with pure island honey and protective natural beeswax.</p>
+            <span class="stock-badge limited">Available Now — While Supplies Last</span>
+          </div>
+          <div class="card-footer">
+            <span class="price-label">Handcrafted</span>
+            <span class="price">Inquire Availability</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Beekeeper Bio Section -->
+      <div class="beekeeper-card">
+        <h3>🐝 Natural Hive Care & Swarm Protection</h3>
+        <p>At Hilo Hive & Flame, our bees are managed with chemical-free, natural beekeeping standards. Every jar of honey and block of beeswax comes from colonies foraging freely across native Big Island rainforest flora. When wild swarms appear, we safely rescue and rehome them in our apiary.</p>
+      </div>
+    </section>
+
+    <!-- Live Hatchlings Section -->
+    <section id="hatchlings">
+      <h2 class="section-title">🐥 Live Hatchlings & Poultry</h2>
+      <p class="section-subtitle-text">Healthy chicks, ducklings, turkey poults, and guinea keets raised on organic, unmedicated feeding protocols.</p>
+      <div class="grid">
+        <div class="card">
+          <div>
+            <span class="badge">Chicken Breeds</span>
+            <h3>Chicks & Laying Breeds</h3>
+            <p>Featuring Jersey Giants, Rhode Island Reds, and Ermine Ameraucanas raised with natural care.</p>
+            <span class="stock-badge limited">Seasonal — Check Availability</span>
+          </div>
+          <div class="card-footer">
+            <span class="price-label">Availability</span>
+            <span class="price">Seasonal</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <div>
+            <span class="badge">Pasture Breeds</span>
+            <h3>Ducklings</h3>
+            <p>Energetic Runner ducklings raised in our pasture breeding program.</p>
+            <span class="stock-badge limited">Seasonal — Check Availability</span>
+          </div>
+          <div class="card-footer">
+            <span class="price-label">Availability</span>
+            <span class="price">Seasonal</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <div>
+            <span class="badge">Turkey Varieties</span>
+            <h3>Turkey Poults</h3>
+            <p>Broad Breasted White and Heritage Turkey poults raised for homesteading and pasture feeding.</p>
+            <span class="stock-badge limited">Seasonal — Check Availability</span>
+          </div>
+          <div class="card-footer">
+            <span class="price-label">Availability</span>
+            <span class="price">Seasonal</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <div>
+            <span class="badge">Natural Pest Control</span>
+            <h3>Guinea Fowl Keets</h3>
+            <p>Alert, hardy guinea keets—ideal for natural tick, bug, and orchard pest management on your property.</p>
+            <span class="stock-badge limited">Seasonal — Check Availability</span>
+          </div>
+          <div class="card-footer">
+            <span class="price-label">Availability</span>
+            <span class="price">Seasonal</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Interactive Order Reservation Form -->
+    <section id="order" class="order-section">
+      <h2>📦 Place or Reserve an Order</h2>
+      <p>Submit your request below and we will contact you directly via call or text to confirm daily stock and Fern Forest farm pickup arrangements.</p>
+
+      <form id="orderForm" action="https://formspree.io/f/xoevqyyo" method="POST">
+        <!-- Honeypot spam trap: real visitors never see or fill this in -->
+        <div class="hp-field" aria-hidden="true">
+          <label for="orderWebsite">Leave this field blank</label>
+          <input type="text" id="orderWebsite" name="_gotcha" tabindex="-1" autocomplete="off">
+        </div>
+
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="name">Your Full Name</label>
+            <input type="text" id="name" name="Name" placeholder="e.g. Malia Silva" required>
+          </div>
+
+          <div class="form-group">
+            <label for="phone">Phone Number (Call / Text)</label>
+            <input type="tel" id="phone" name="Phone" pattern="[0-9()+\-\s]{7,}" placeholder="(808) 000-0000" required>
+          </div>
+
+          <div class="form-group">
+            <label for="item">Primary Item Requested</label>
+            <select id="item" name="Item Requested" required>
+              <optgroup label="Farm Fresh Eggs & Tilapia">
+                <option value="Fresh Chicken Eggs ($5/dz)">Fresh Chicken Eggs ($5/dz)</option>
+                <option value="Pasture Duck Eggs ($8/dz)">Pasture Duck Eggs ($8/dz)</option>
+                <option value="Farm-Raised Tilapia">Farm-Raised Tilapia</option>
+              </optgroup>
+              <optgroup label="Fruits, Plants & Trees">
+                <option value="Island Fruits">Island Fruits</option>
+                <option value="Plants & Nursery Starts">Plants & Nursery Starts</option>
+                <option value="Fruit & Landscape Trees">Fruit & Landscape Trees</option>
+              </optgroup>
+              <optgroup label="Hilo Hive & Flame Goods">
+                <option value="Hilo Hive & Flame Pure Honey">Hilo Hive & Flame Pure Honey</option>
+                <option value="Handcrafted Beeswax Candles">Handcrafted Beeswax Candles</option>
+                <option value="Beeswax & Honey Lotions">Beeswax & Honey Lotions</option>
+              </optgroup>
+              <optgroup label="Poultry Breeds & Hatchlings">
+                <option value="Runner Ducklings">Runner Ducklings</option>
+                <option value="Jersey Giant Chicks">Jersey Giant Chicks</option>
+                <option value="Rhode Island Red Chicks">Rhode Island Red Chicks</option>
+                <option value="Ermine Ameraucana Chicks">Ermine Ameraucana Chicks</option>
+                <option value="Broad Breasted White Turkey Poults">Broad Breasted White Turkey Poults</option>
+                <option value="Heritage Turkey Poults">Heritage Turkey Poults</option>
+                <option value="Guinea Fowl Keets">Guinea Fowl Keets</option>
+              </optgroup>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="quantity">Quantity Desired</label>
+            <input type="text" id="quantity" name="Quantity" placeholder="e.g. 2 dozen / 4 keets / 1 tree" required>
+          </div>
+        </div>
+
+        <div class="form-group" style="margin-bottom: 1.5rem;">
+          <label for="notes">Additional Notes / Preferred Pickup Time</label>
+          <textarea id="notes" name="Notes" rows="3" placeholder="Let us know any preferences or preferred pickup dates..."></textarea>
+        </div>
+
+        <div style="text-align: center;">
+          <button type="submit" class="btn" id="orderSubmitBtn" style="padding: 1rem 3rem; font-size: 1.05rem;">Submit Reservation Request</button>
+          <p class="form-status" id="orderStatus"></p>
+        </div>
+      </form>
+    </section>
+
+    <!-- Customer Reviews -->
+    <section>
+      <h2 class="section-title">⭐ Words From Our Community</h2>
+      <div class="testimonials-grid">
+        <div class="testimonial-card">
+          <p>"The eggs from Polygrove Farms have the richest, deepest orange yolks I've ever seen on the Big Island. Unbeatable quality!"</p>
+          <div>
+            <div class="testimonial-author">Colleen</div>
+            <div class="testimonial-location">Mt. View, HI</div>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <p>"Hilo Hive & Flame candles burn so clean and smell incredible naturally. Knowing the honey and wax come right from local hives makes it even better."</p>
+          <div>
+            <div class="testimonial-author">Jennie</div>
+            <div class="testimonial-location">Las Vegas, NV</div>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <p>"The honey is absolutely amazing! Pure, rich rainforest flavor that you just can't get anywhere else."</p>
+          <div>
+            <div class="testimonial-author">Shenell</div>
+            <div class="testimonial-location">Las Vegas, NV</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Animal Feed Donation -->
+    <div class="donate-banner">
+      <h2>🌾 Feed & Support Our Animals</h2>
+      <p>We are dedicated to providing our flock and apiaries with organic feed, natural shelter, and ethical pasture management. If you'd like to sponsor a bag of feed or support our farm sanctuary, contributions are warmly welcomed!</p>
+      <div style="margin-top: 1.5rem; display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
+        <a href="https://venmo.com/Emy-Mahoney" target="_blank" class="btn btn-venmo">Donate via Venmo (@Emy-Mahoney)</a>
+        <a href="mailto:info@polygrovefarms.com?subject=Animal%20Feed%20Sponsorship" class="btn">Sponsor Feed / Contact Us</a>
+      </div>
+    </div>
+
+    <!-- Emergency Swarm Removal -->
+    <section id="swarm" class="swarm-banner">
+      <div>
+        <h2>🚨 Emergency Honeybee Swarm Removal</h2>
+        <p>Spotted a swarm of bees on your property in the Puna or Hilo district? Do not spray them! Call our certified beekeepers for prompt, humane swarm collection and relocation to our safe apiary.</p>
+      </div>
+      <div>
+        <a href="tel:8084817982" class="btn btn-emergency">Call for Swarm Removal</a>
+      </div>
+    </section>
+
+    <!-- Footer / Contact Info -->
+    <section id="contact" class="footer-grid">
+      <div class="footer-card">
+        <h2>📍 Location & Pickup</h2>
+        <p><strong>Fern Forest Homestead</strong><br>Mountain View, HI 96771<br>Big Island, Hawaii</p>
+        <p style="margin-top: 1rem; font-size: 0.9rem; color: var(--text-muted);">Farm pickup available by scheduled appointment or direct arrangement.</p>
+      </div>
+      <div class="footer-card">
+        <h2>📞 Direct Contact</h2>
+        <p><strong>Call or Text:</strong><br>(808) 481-7982</p>
+        <p style="margin-top: 1rem;"><strong>Email:</strong><br>info@polygrovefarms.com</p>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- Simple Footer -->
+  <footer style="text-align: center; padding: 2.5rem 1rem; border-top: 1px solid var(--border); color: var(--text-muted); font-size: 0.9rem;">
+    <p>&copy; 2026 Polygrove Farms & Hilo Hive & Flame. All rights reserved. Grown & crafted with Korean Natural Farming in Fern Forest, Hawaii.</p>
+  </footer>
+
+  <!-- Mailing List Popup -->
+  <div class="mailing-overlay" id="mailingOverlay">
+    <div class="mailing-modal">
+      <button class="mailing-close" id="mailingClose" aria-label="Close">&times;</button>
+      <div class="mailing-eyebrow">JOIN THE HOMESTEAD LIST</div>
+      <h2>Fresh Deals & What's In Stock</h2>
+      <p>Get a heads up when eggs, honey, hatchlings, and Hilo Hive & Flame goods are ready — plus first access to seasonal specials.</p>
+      <form class="mailing-form" id="mailingForm" action="https://formspree.io/f/xaenyakp" method="POST">
+        <div class="hp-field" aria-hidden="true">
+          <label for="mailingWebsite">Leave this field blank</label>
+          <input type="text" id="mailingWebsite" name="_gotcha" tabindex="-1" autocomplete="off">
+        </div>
+        <input type="hidden" name="form-name" value="mailing-list-signup">
+        <input type="email" name="Email" id="mailingEmail" placeholder="you@email.com" required>
+        <button type="submit" class="btn" id="mailingSubmitBtn">Sign Me Up</button>
+        <p class="form-status" id="mailingStatus"></p>
+      </form>
+      <p class="mailing-fineprint">No spam — just farm updates. Unsubscribe anytime.</p>
+    </div>
+  </div>
+
+  <button class="mailing-tab" id="mailingTab">📬 Join Our List</button>
+
+  <script>
+    const navToggle = document.getElementById('navToggle');
+    const navLinks = document.getElementById('navLinks');
+    const navOverlay = document.getElementById('navOverlay');
+
+    function closeNav() {
+      navToggle.classList.remove('open');
+      navToggle.setAttribute('aria-expanded', 'false');
+      navLinks.classList.remove('open');
+      navOverlay.classList.remove('visible');
+    }
+
+    function toggleNav() {
+      const isOpen = navLinks.classList.toggle('open');
+      navToggle.classList.toggle('open', isOpen);
+      navToggle.setAttribute('aria-expanded', String(isOpen));
+      navOverlay.classList.toggle('visible', isOpen);
+    }
+
+    navToggle.addEventListener('click', toggleNav);
+    navOverlay.addEventListener('click', closeNav);
+    navLinks.querySelectorAll('a').forEach(link => link.addEventListener('click', closeNav));
+
+    function wireSecureForm(formId, statusId, btnId, successMessage) {
+      const form = document.getElementById(formId);
+      const status = document.getElementById(statusId);
+      const btn = document.getElementById(btnId);
+
+      form.addEventListener('submit', async function (e) {
+        e.preventDefault();
+
+        const honeypot = form.querySelector('input[name="_gotcha"]');
+        if (honeypot && honeypot.value) {
+          status.textContent = 'Thank you!';
+          status.className = 'form-status success';
+          form.reset();
+          return;
+        }
+
+        btn.disabled = true;
+        const originalLabel = btn.textContent;
+        btn.textContent = 'Sending...';
+        status.className = 'form-status';
+        status.textContent = '';
+
+        try {
+          const response = await fetch(form.action, {
+            method: 'POST',
+            body: new FormData(form),
+            headers: { 'Accept': 'application/json' }
+          });
+
+          if (response.ok) {
+            status.textContent = successMessage;
+            status.className = 'form-status success';
+            form.reset();
+          } else {
+            status.textContent = "Something didn't go through — please call or text (808) 481-7982 instead.";
+            status.className = 'form-status error';
+          }
+        } catch (err) {
+          status.textContent = "Something didn't go through — please call or text (808) 481-7982 instead.";
+          status.className = 'form-status error';
+        } finally {
+          btn.disabled = false;
+          btn.textContent = originalLabel;
+        }
+      });
+    }
+
+    wireSecureForm('orderForm', 'orderStatus', 'orderSubmitBtn', "Reservation received! We'll call or text you shortly.");
+    wireSecureForm('mailingForm', 'mailingStatus', 'mailingSubmitBtn', "You're on the list! 🐝");
+
+    const mailingOverlay = document.getElementById('mailingOverlay');
+    const mailingClose = document.getElementById('mailingClose');
+    const mailingTab = document.getElementById('mailingTab');
+    const STORAGE_KEY = 'polygrove_mailing_dismissed';
+
+    function showMailingPopup() {
+      mailingOverlay.classList.add('visible');
+      mailingTab.classList.remove('visible');
+    }
+
+    function hideMailingPopup(remember) {
+      mailingOverlay.classList.remove('visible');
+      if (remember) {
+        try { localStorage.setItem(STORAGE_KEY, Date.now().toString()); } catch (e) {}
+      }
+      mailingTab.classList.add('visible');
+    }
+
+    mailingClose.addEventListener('click', () => hideMailingPopup(true));
+    mailingOverlay.addEventListener('click', (e) => {
+      if (e.target === mailingOverlay) hideMailingPopup(true);
+    });
+    mailingTab.addEventListener('click', showMailingPopup);
+
+    document.getElementById('mailingForm').addEventListener('submit', () => {
+      try { localStorage.setItem(STORAGE_KEY, 'subscribed'); } catch (e) {}
+    });
+
+    (function initMailingPopup() {
+      let dismissed = null;
+      try { dismissed = localStorage.getItem(STORAGE_KEY); } catch (e) {}
+
+      mailingTab.classList.add('visible');
+
+      if (dismissed === 'subscribed') return;
+
+      if (dismissed) {
+        const daysSince = (Date.now() - Number(dismissed)) / (1000 * 60 * 60 * 24);
+        if (daysSince < 7) return;
+      }
+
+      setTimeout(showMailingPopup, 6000);
+    })();
+  </script>
+
+</body>
+</html>
