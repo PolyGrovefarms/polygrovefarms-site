@@ -242,7 +242,8 @@
     }
 
     .brand-banner {
-      background: radial-gradient(circle at 80% 20%, #1e293b 0%, #090d16 100%);
+      /* Color is picked up from the logo itself (see script at bottom); black is the fallback */
+      background: var(--logo-bg, #0a0a0a);
       color: white;
       border-radius: 24px;
       padding: 3.5rem 3rem;
@@ -251,18 +252,8 @@
       align-items: center;
       gap: 3rem;
       box-shadow: 0 20px 40px rgba(0,0,0,0.25);
-      border: 1px solid #334155;
       position: relative;
       overflow: hidden;
-    }
-
-    .brand-banner::before {
-      content: "";
-      position: absolute;
-      top: 0; right: 0; bottom: 0; left: 0;
-      background-image: url("data:image/svg+xml,%3Csvg width='56' height='100' viewBox='0 0 56 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M28 66L0 50L0 16L28 0L56 16L56 50L28 66ZM28 100L0 84L0 68L28 84L56 68L56 84L28 100Z' fill='%23f59e0b' fill-opacity='0.04' fill-rule='evenodd'/%3E%3C/svg%3E");
-      opacity: 0.8;
-      pointer-events: none;
     }
 
     .hive-badge {
@@ -314,7 +305,6 @@
       max-width: 100%;
       height: auto;
       display: block;
-      filter: drop-shadow(0 12px 28px rgba(0,0,0,0.45));
     }
 
     .brand-info {
@@ -334,6 +324,13 @@
       color: #94a3b8;
       font-size: 1.1rem;
       max-width: 580px;
+    }
+
+    .hivelux-btn {
+      margin-top: 1.75rem;
+      padding: 1rem 2.4rem;
+      font-size: 1rem;
+      letter-spacing: 0.03em;
     }
 
     .grid {
@@ -627,84 +624,6 @@
       margin-bottom: 0.5rem;
     }
 
-    /* Realistic emergency beacon light */
-    .beacon {
-      position: relative;
-      display: inline-block;
-      width: 46px;
-      height: 50px;
-      vertical-align: middle;
-      margin-right: 0.7rem;
-    }
-
-    .beacon-glow {
-      position: absolute;
-      left: 50%;
-      top: 18px;
-      width: 110px;
-      height: 110px;
-      margin: -55px 0 0 -55px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(255, 40, 40, 0.6) 0%, rgba(255, 40, 40, 0.18) 45%, rgba(255, 40, 40, 0) 70%);
-      animation: beacon-pulse 1.4s ease-in-out infinite;
-      pointer-events: none;
-    }
-
-    .beacon-dome {
-      position: absolute;
-      left: 5px;
-      top: 2px;
-      width: 36px;
-      height: 34px;
-      border-radius: 18px 18px 3px 3px;
-      background: radial-gradient(circle at 35% 28%, #ffb3b3 0%, #ff3030 32%, #b30000 75%, #6b0000 100%);
-      box-shadow: 0 0 16px 4px rgba(255, 40, 40, 0.8), inset 0 -7px 9px rgba(80, 0, 0, 0.55), inset 0 3px 5px rgba(255, 255, 255, 0.35);
-      overflow: hidden;
-      animation: beacon-flash 1.4s ease-in-out infinite;
-    }
-
-    .beacon-beam {
-      position: absolute;
-      left: 50%;
-      top: 62%;
-      width: 130px;
-      height: 130px;
-      margin: -65px 0 0 -65px;
-      background: conic-gradient(from 0deg, rgba(255, 255, 255, 0.85) 0deg, rgba(255, 255, 255, 0) 38deg, rgba(255, 255, 255, 0) 180deg, rgba(255, 255, 255, 0.4) 200deg, rgba(255, 255, 255, 0) 235deg, rgba(255, 255, 255, 0) 360deg);
-      mix-blend-mode: screen;
-      animation: beacon-spin 1.4s linear infinite;
-    }
-
-    .beacon-base {
-      position: absolute;
-      left: 0;
-      bottom: 0;
-      width: 46px;
-      height: 15px;
-      border-radius: 4px;
-      background: linear-gradient(180deg, #7a828a 0%, #3a4046 55%, #1f2327 100%);
-      box-shadow: 0 3px 5px rgba(0, 0, 0, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.25);
-    }
-
-    @keyframes beacon-spin {
-      from { transform: rotate(0deg); }
-      to { transform: rotate(360deg); }
-    }
-
-    @keyframes beacon-flash {
-      0%, 100% { filter: brightness(0.7); }
-      50% { filter: brightness(1.3); }
-    }
-
-    @keyframes beacon-pulse {
-      0%, 100% { opacity: 0.35; transform: scale(0.85); }
-      50% { opacity: 1; transform: scale(1.1); }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      .beacon-glow, .beacon-dome, .beacon-beam { animation: none; }
-    }
-
     .donate-banner {
       background: #fffbeb;
       border: 2px dashed #fef08a;
@@ -744,21 +663,6 @@
     .btn-emergency:hover { background: #b91c1c; }
     .btn-venmo { background: #008cff; }
     .btn-venmo:hover { background: #0070cc; }
-
-    /* YouTube subscribe button */
-    .btn-youtube {
-      background: #ff0000;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.6rem;
-    }
-    .btn-youtube:hover { background: #cc0000; }
-
-    .btn-youtube svg {
-      width: 22px;
-      height: 22px;
-      fill: currentColor;
-    }
 
     .btn-social-btn {
       display: inline-flex;
@@ -1025,7 +929,7 @@
 
     <ul class="nav-links" id="navLinks">
       <li><a href="#story">Our Story</a></li>
-      <li><a href="#youtube">Videos</a></li>
+      <li><a href="#updates">Farm Updates</a></li>
       <li><a href="#eggs">Eggs & Fish</a></li>
       <li><a href="#produce">Fruits & Plants</a></li>
       <li><a href="#apiary">Hilo Hive & Flame</a></li>
@@ -1040,9 +944,6 @@
           </a>
           <a href="https://instagram.com/polygrove.farms26" target="_blank" class="nav-social-icon" title="Instagram Profile">
             <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-          </a>
-          <a href="https://www.youtube.com/@polygrovefarms" target="_blank" rel="noopener" class="nav-social-icon" title="YouTube Channel" aria-label="Polygrove Farms on YouTube">
-            <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
           </a>
         </div>
       </li>
@@ -1076,14 +977,14 @@
       <p>Alongside our fresh produce and poultry, we tend honeybee colonies under our artisan brand, <strong>Hilo Hive & Flame</strong>, offering raw island honey, hand-poured beeswax candles, and natural body care, while serving our neighbors with humane bee swarm relocation.</p>
     </section>
 
-    <!-- YouTube: Subscribe -->
-    <section id="youtube" class="story-section" style="text-align: center;">
-      <h2>🎥 Subscribe to the Farm</h2>
-      <p>Go behind the scenes on the farm, from the flock to the hives. Watch our latest videos below, and subscribe on YouTube so you never miss a new one!</p>
-      <a href="https://www.youtube.com/@polygrovefarms?sub_confirmation=1" target="_blank" rel="noopener" class="btn btn-youtube">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-        Subscribe on YouTube
-      </a>
+    <!-- Farm Updates: Instagram Feed -->
+    <section id="updates" class="story-section" style="text-align: center;">
+      <h2>📸 Follow the Farm</h2>
+      <p>Daily happenings from pasture to hive — follow along on Instagram for fresh updates and behind-the-scenes moments.</p>
+      <div style="display: flex; justify-content: center; overflow-x: auto; padding-top: 0.5rem;">
+        <!-- SnapWidget -->
+        <iframe src="https://snapwidget.com/embed/1130901" class="snapwidget-widget" allowtransparency="true" frameborder="0" scrolling="no" style="border:none; overflow:hidden; width:480px; height:160px" title="farm"></iframe>
+      </div>
     </section>
 
     <!-- Pasture-Raised Eggs & Tilapia -->
@@ -1113,7 +1014,7 @@
           </div>
           <div class="card-footer">
             <span class="price-label">Price</span>
-            <span class="price">$8.00 / doz</span>
+            <span class="price">$8.00 / ½ doz</span>
           </div>
         </div>
 
@@ -1188,6 +1089,7 @@
         </div>
         <div class="brand-info">
           <p>Small-batch raw honey, hand-poured beeswax candles, and natural skincare harvested directly from our hives in Fern Forest, Big Island.</p>
+          <a href="hivelux.html" class="btn hivelux-btn">Come Experience Our HiveLux Addition</a>
         </div>
       </div>
 
@@ -1337,7 +1239,7 @@
             <select id="item" name="Item Requested" required>
               <optgroup label="Farm Fresh Eggs & Tilapia">
                 <option value="Fresh Chicken Eggs ($5/dz)">Fresh Chicken Eggs ($5/dz)</option>
-                <option value="Pasture Duck Eggs ($8/dz)">Pasture Duck Eggs ($8/dz)</option>
+                <option value="Pasture Duck Eggs ($8/½ dz)">Pasture Duck Eggs ($8/½ dz)</option>
                 <option value="Farm-Raised Tilapia">Farm-Raised Tilapia</option>
               </optgroup>
               <optgroup label="Fruits, Plants & Trees">
@@ -1423,7 +1325,7 @@
     <!-- Emergency Swarm Removal -->
     <section id="swarm" class="swarm-banner">
       <div>
-        <h2><span class="beacon" aria-hidden="true"><span class="beacon-glow"></span><span class="beacon-dome"><span class="beacon-beam"></span></span><span class="beacon-base"></span></span>Emergency Honeybee Swarm Removal</h2>
+        <h2>🚨 Emergency Honeybee Swarm Removal</h2>
         <p>Spotted a swarm of bees on your property in the Puna or Hilo district? Do not spray them! Call our certified beekeepers for prompt, humane swarm collection and relocation to our safe apiary.</p>
       </div>
       <div>
@@ -1590,6 +1492,44 @@
       }
 
       setTimeout(showMailingPopup, 6000);
+    })();
+
+    // Match the banner color to the Hilo Hive & Flame logo image
+    (function matchLogoBackground() {
+      const img = document.querySelector('.hive-logo-img');
+      if (!img) return;
+
+      function apply() {
+        try {
+          const w = img.naturalWidth, h = img.naturalHeight;
+          if (!w || !h) return;
+          const size = 4, inset = 3;
+          const canvas = document.createElement('canvas');
+          canvas.width = size;
+          canvas.height = size;
+          const ctx = canvas.getContext('2d', { willReadFrequently: true });
+          const corners = [
+            [inset, inset],
+            [w - inset - size, inset],
+            [inset, h - inset - size],
+            [w - inset - size, h - inset - size]
+          ];
+          let r = 0, g = 0, b = 0, n = 0;
+          corners.forEach(function (c) {
+            ctx.clearRect(0, 0, size, size);
+            ctx.drawImage(img, c[0], c[1], size, size, 0, 0, size, size);
+            const d = ctx.getImageData(0, 0, size, size).data;
+            for (let i = 0; i < d.length; i += 4) {
+              if (d[i + 3] > 200) { r += d[i]; g += d[i + 1]; b += d[i + 2]; n++; }
+            }
+          });
+          if (!n) return;
+          const color = 'rgb(' + Math.round(r / n) + ',' + Math.round(g / n) + ',' + Math.round(b / n) + ')';
+          document.documentElement.style.setProperty('--logo-bg', color);
+        } catch (e) {}
+      }
+
+      if (img.complete) { apply(); } else { img.addEventListener('load', apply); }
     })();
   </script>
 
