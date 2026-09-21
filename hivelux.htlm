@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HiveLux | Hilo Hive & Flame | Fern Forest, HI</title>
+  <meta name="description" content="HiveLux is the luxury line from Hilo Hive & Flame — Skin Silk lotion, body polish, lip glaze, and high-end candles, made in small batches in Fern Forest, Big Island.">
+
+  <!-- Fonts: a classic serif to match the product labels, plus Inter for small text -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      /* Colors taken from the Bee Smooth label: cream paper, near-black ink */
+      --cream: #fefcf1;
+      --ink: #222122;
+      --ink-soft: #4a4744;
+      --ink-hover: #3d3b3c;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', -apple-system, sans-serif;
+      background-color: var(--cream);
+      /* Faint honeycomb background, like the label */
+      background-image: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='41.57'%20height='72'%20viewBox='0%200%2041.57%2072'%3E%3Cpath%20d='M0.00%20-24.00%20L20.79%20-12.00%20L20.79%2012.00%20L0.00%2024.00%20L-20.79%2012.00%20L-20.79%20-12.00%20Z%20M41.57%20-24.00%20L62.36%20-12.00%20L62.36%2012.00%20L41.57%2024.00%20L20.79%2012.00%20L20.79%20-12.00%20Z%20M20.79%2012.00%20L41.57%2024.00%20L41.57%2048.00%20L20.79%2060.00%20L0.00%2048.00%20L0.00%2024.00%20Z%20M0.00%2048.00%20L20.79%2060.00%20L20.79%2084.00%20L0.00%2096.00%20L-20.79%2084.00%20L-20.79%2060.00%20Z%20M41.57%2048.00%20L62.36%2060.00%20L62.36%2084.00%20L41.57%2096.00%20L20.79%2084.00%20L20.79%2060.00%20Z'%20fill='none'%20stroke='%23f0e6bf'%20stroke-width='1.1'/%3E%3C/svg%3E");
+      background-repeat: repeat;
+      color: var(--ink);
+      line-height: 1.7;
+    }
+
+    a:focus-visible, .btn:focus-visible {
+      outline: 2px solid var(--ink);
+      outline-offset: 3px;
+    }
+
+    /* Top bar */
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--cream);
+      border-bottom: 2px solid var(--ink);
+      padding: 0.9rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .wordmark {
+      font-family: 'Libre Baskerville', Georgia, serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      color: var(--ink);
+      text-decoration: none;
+    }
+
+    .topnav {
+      display: flex;
+      align-items: center;
+      gap: 1.75rem;
+    }
+
+    .topnav a {
+      color: var(--ink-soft);
+      text-decoration: none;
+      font-size: 0.88rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .topnav a:hover { color: var(--ink); text-decoration: underline; }
+
+    .topnav .back-link {
+      color: var(--ink);
+      border: 1.5px solid var(--ink);
+      border-radius: 2px;
+      padding: 0.4rem 1.1rem;
+    }
+
+    .topnav .back-link:hover {
+      background: var(--ink);
+      color: var(--cream);
+      text-decoration: none;
+    }
+
+    /* Double-line frame, like the label */
+    .frame {
+      background: var(--cream);
+      border: 4px solid var(--ink);
+      position: relative;
+    }
+
+    .frame::before {
+      content: "";
+      position: absolute;
+      inset: 8px;
+      border: 1.5px solid var(--ink);
+      pointer-events: none;
+    }
+
+    /* Hero */
+    .hero {
+      padding: 4rem 1.5rem 3.5rem;
+    }
+
+    .hero-frame {
+      max-width: 920px;
+      margin: 0 auto;
+      padding: 3.5rem 2.5rem 3.25rem;
+      text-align: center;
+    }
+
+    .hero-brand {
+      font-family: 'Libre Baskerville', Georgia, serif;
+      font-size: 1.25rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      color: var(--ink);
+    }
+
+    .hero h1 {
+      font-family: 'Libre Baskerville', Georgia, serif;
+      font-size: 4.6rem;
+      font-weight: 700;
+      letter-spacing: 0.01em;
+      line-height: 1.1;
+      color: var(--ink);
+      margin: 1.25rem 0 0.5rem;
+    }
+
+    .hero-tagline {
+      font-family: 'Libre Baskerville', Georgia, serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--ink);
+    }
+
+    .hero-photo {
+      display: block;
+      width: 100%;
+      max-width: 760px;
+      height: auto;
+      margin: 2rem auto 1.75rem;
+      border: 1.5px solid var(--ink);
+    }
+
+    .hero-copy {
+      max-width: 540px;
+      margin: 0 auto 2rem;
+      color: var(--ink-soft);
+      font-size: 1.02rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-block;
+      background: var(--ink);
+      color: var(--cream);
+      border: 1.5px solid var(--ink);
+      text-decoration: none;
+      padding: 0.85rem 2rem;
+      border-radius: 2px;
+      font-weight: 600;
+      font-size: 0.92rem;
+      letter-spacing: 0.02em;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .btn:hover {
+      background: var(--ink-hover);
+      border-color: var(--ink-hover);
+      transform: translateY(-2px);
+    }
+
+    .btn-outline {
+      background: var(--cream);
+      color: var(--ink);
+    }
+
+    .btn-outline:hover {
+      background: var(--ink);
+      border-color: var(--ink);
+      color: var(--cream);
+    }
+
+    /* Sections */
+    .wrap {
+      max-width: 1040px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    section { padding: 3.5rem 0; }
+
+    .section-head {
+      text-align: center;
+      margin-bottom: 2.75rem;
+    }
+
+    .section-head h2 {
+      font-family: 'Libre Baskerville', Georgia, serif;
+      font-size: 2.3rem;
+      font-weight: 700;
+      color: var(--ink);
+    }
+
+    .section-head p {
+      color: var(--ink-soft);
+      max-width: 560px;
+      margin: 0.6rem auto 0;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 2rem;
+    }
+
+    .product {
+      padding: 2.75rem 2.25rem 2.25rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .tag {
+      display: inline-block;
+      font-family: 'Libre Baskerville', Georgia, serif;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--ink);
+      margin-bottom: 0.9rem;
+    }
+
+    .product h3 {
+      font-family: 'Libre Baskerville', Georgia, serif;
+      font-size: 1.6rem;
+      font-weight: 700;
+      line-height: 1.25;
+      color: var(--ink);
+      margin-bottom: 0.75rem;
+    }
+
+    .product p {
+      color: var(--ink-soft);
+      font-size: 0.98rem;
+    }
+
+    .italic-line {
+      font-family: 'Libre Baskerville', Georgia, serif;
+      font-style: italic;
+      font-size: 1.15rem;
+      color: var(--ink);
+      margin-bottom: 0.6rem;
+    }
+
+    .product p.italic-line { color: var(--ink); font-size: 1.15rem; }
+
+    .netwt {
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+      color: var(--ink-soft);
+    }
+
+    .product-footer {
+      border-top: 1.5px solid var(--ink);
+      margin-top: 1.75rem;
+      padding-top: 1.25rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .price-note {
+      font-size: 0.85rem;
+      color: var(--ink-soft);
+    }
+
+    .product-footer a {
+      color: var(--ink);
+      font-weight: 600;
+      font-size: 0.92rem;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    .product-footer a:hover { text-decoration-thickness: 2px; }
+
+    .about-panel {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 3rem 2.5rem;
+      text-align: center;
+    }
+
+    .about-panel h2 {
+      font-family: 'Libre Baskerville', Georgia, serif;
+      font-size: 2.1rem;
+      margin-bottom: 1.1rem;
+    }
+
+    .about-panel p {
+      color: var(--ink-soft);
+      font-size: 1.05rem;
+      margin-bottom: 1rem;
+    }
+
+    .about-panel p:last-child { margin-bottom: 0; }
+
+    .contact-panel {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 3.25rem 2.5rem;
+      text-align: center;
+    }
+
+    .contact-panel h2 {
+      font-family: 'Libre Baskerville', Georgia, serif;
+      font-size: 2.1rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .contact-panel p {
+      color: var(--ink-soft);
+      max-width: 520px;
+      margin: 0 auto 1.75rem;
+    }
+
+    .contact-small {
+      margin-top: 1.75rem;
+      font-size: 0.88rem;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2.25rem 1.5rem 2.75rem;
+      background: var(--cream);
+      border-top: 2px solid var(--ink);
+      color: var(--ink-soft);
+      font-size: 0.88rem;
+    }
+
+    .footer-bee {
+      width: 84px;
+      height: auto;
+      display: block;
+      margin: 0 auto 1rem;
+    }
+
+    footer a {
+      color: var(--ink);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    @media (max-width: 768px) {
+      .topbar { padding: 0.8rem 1.25rem; }
+      .topnav { gap: 1rem; }
+      .topnav a:not(.back-link) { display: none; }
+      .wordmark { font-size: 1.05rem; }
+
+      .hero { padding: 2.25rem 1rem 2.5rem; }
+      .hero-frame { padding: 2.5rem 1.4rem 2.25rem; }
+      .hero-photo { margin: 1.5rem auto 1.4rem; }
+      .hero-brand { font-size: 0.95rem; letter-spacing: 0.14em; }
+      .hero h1 { font-size: 3.2rem; }
+      .hero-tagline { font-size: 0.85rem; letter-spacing: 0.16em; }
+
+      section { padding: 2.5rem 0; }
+      .grid { grid-template-columns: 1fr; }
+      .section-head h2 { font-size: 1.9rem; }
+      .about-panel, .contact-panel { padding: 2.5rem 1.5rem; }
+      .about-panel h2, .contact-panel h2 { font-size: 1.75rem; }
+    }
+
+    @media (max-width: 420px) {
+      .hero h1 { font-size: 2.7rem; }
+      .topnav .back-link { font-size: 0.78rem; padding: 0.35rem 0.8rem; }
+      .product { padding: 2.5rem 1.6rem 2rem; }
+    }
+  </style>
+</head>
+<body id="top">
+
+  <!-- Top bar -->
+  <header class="topbar">
+    <a href="#top" class="wordmark">HIVELUX</a>
+    <nav class="topnav">
+      <a href="#collection">Collection</a>
+      <a href="#order">Order</a>
+      <a href="index.html#apiary" class="back-link">Back to Hilo Hive & Flame</a>
+    </nav>
+  </header>
+
+  <!-- Hero -->
+  <div class="hero">
+    <div class="frame hero-frame">
+      <div class="hero-brand">HILO HIVE & FLAME</div>
+      <h1>HiveLux</h1>
+      <p class="hero-tagline">The Luxury Series</p>
+      <img src="hivelux-products.jpg" alt="HiveLux products: Lip Glaze, Skin Silk, Bee Smooth Body Polishing Scrub, and the Body Ritual card" class="hero-photo">
+      <p class="hero-copy">Skin Silk lotion, body polish, lip glaze, and high-end candles — made in small batches in Fern Forest, Big Island.</p>
+      <div class="hero-actions">
+        <a href="#collection" class="btn">Explore the Collection</a>
+        <a href="tel:8084817982" class="btn btn-outline">Call / Text to Order</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Collection -->
+  <section id="collection">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>The Collection</h2>
+        <p>Small-batch luxury, available now.</p>
+      </div>
+
+      <div class="grid">
+        <div class="frame product">
+          <div>
+            <span class="tag">Body Polish</span>
+            <h3>Bee Smooth Body Polishing Scrub</h3>
+            <p class="italic-line">Polish. Nourish. Glow.</p>
+            <p>A luxurious polishing scrub that buffs away dullness and leaves skin feeling soft and smooth.</p>
+          </div>
+          <div class="product-footer">
+            <span class="price-note">Inquire for pricing</span>
+            <a href="tel:8084817982">Call / Text to Order</a>
+          </div>
+        </div>
+
+        <div class="frame product">
+          <div>
+            <span class="tag">Lotion</span>
+            <h3>Skin Silk</h3>
+            <p class="italic-line">Let Your Skin Drink the Nectar.</p>
+            <p>Rich, silky moisture for skin that feels beautifully soft.</p>
+          </div>
+          <div class="product-footer">
+            <span class="price-note">Inquire for pricing</span>
+            <a href="tel:8084817982">Call / Text to Order</a>
+          </div>
+        </div>
+
+        <div class="frame product">
+          <div>
+            <span class="tag">Lip Care</span>
+            <h3>Lip Glaze</h3>
+            <p class="italic-line">Let Your Lips Taste the Nectar.</p>
+            <p>A glossy, nourishing finish for the lips, from the HiveLux Series.</p>
+            <p class="netwt">NET WT. 0.15 OZ (4.25 g)</p>
+          </div>
+          <div class="product-footer">
+            <span class="price-note">Inquire for pricing</span>
+            <a href="tel:8084817982">Call / Text to Order</a>
+          </div>
+        </div>
+
+        <div class="frame product">
+          <div>
+            <span class="tag">Candles</span>
+            <h3>HiveLux Candles</h3>
+            <p class="italic-line">Light. Breathe. Linger.</p>
+            <p>High-end candles crafted with the same care as every Hilo Hive & Flame piece.</p>
+          </div>
+          <div class="product-footer">
+            <span class="price-note">Inquire for pricing</span>
+            <a href="tel:8084817982">Call / Text to Order</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="about">
+    <div class="wrap">
+      <div class="frame about-panel">
+        <h2>About HiveLux</h2>
+        <p>HiveLux is the luxury addition to <strong>Hilo Hive & Flame</strong>, the honey and candle brand of Polygrove Farms in Fern Forest, Hawaii.</p>
+        <p>Every piece is made in small batches on our Big Island homestead, with the same care we put into our hives.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Order / Contact -->
+  <section id="order" style="padding-top: 0;">
+    <div class="wrap">
+      <div class="frame contact-panel">
+        <h2>Order HiveLux</h2>
+        <p>Call or text us to reserve your HiveLux pieces and arrange Fern Forest farm pickup.</p>
+        <div class="hero-actions">
+          <a href="tel:8084817982" class="btn">Call / Text (808) 481-7982</a>
+          <a href="mailto:info@polygrovefarms.com?subject=HiveLux%20Inquiry" class="btn btn-outline">Email Us</a>
+        </div>
+        <p class="contact-small">Farm pickup available by scheduled appointment or direct arrangement.<br>Fern Forest Homestead, Mountain View, HI 96771</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <img src="bee.png" alt="" class="footer-bee">
+    <p>&copy; 2026 Polygrove Farms & Hilo Hive & Flame. A Polygrove Farms Company.</p>
+    <p style="margin-top: 0.5rem;"><a href="index.html">Back to Polygrove Farms</a></p>
+  </footer>
+
+</body>
+</html>
