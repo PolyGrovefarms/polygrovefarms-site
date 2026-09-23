@@ -21,6 +21,8 @@
       --text: #1a221e;
       --text-muted: #5a665e;
       --border: #e8e6df;
+      --youtube-red: #ff0000;
+      --youtube-red-hover: #cc0000;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -239,6 +241,280 @@
       color: var(--text-muted);
       font-size: 1.05rem;
       margin-bottom: 2rem;
+    }
+
+    /* ============ Polygrove Kitchen: floating "Coming Soon" badge ============ */
+    .kitchen-float {
+      position: fixed;
+      left: 1.25rem;
+      bottom: 2.5rem;
+      z-index: 1400;
+      display: none;
+      align-items: center;
+      gap: 0.7rem;
+      background: linear-gradient(160deg, #1d3a2b 0%, #0b1a13 100%);
+      color: #fef3c7;
+      border: 1px solid var(--gold);
+      border-radius: 50px;
+      padding: 0.55rem 1.2rem 0.55rem 0.65rem;
+      cursor: pointer;
+      font-family: inherit;
+      text-align: left;
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.25);
+    }
+
+    .kitchen-float.visible {
+      display: inline-flex;
+      animation: floatIn 2.6s cubic-bezier(0.22, 0.8, 0.3, 1), floatBob 4s ease-in-out 2.6s infinite;
+    }
+
+    .kitchen-float:hover {
+      animation-play-state: paused;
+      border-color: #fef3c7;
+    }
+
+    /* Rises up from below the screen like a balloon, drifts a little past its spot, then settles */
+    @keyframes floatIn {
+      0% { opacity: 0; transform: translateY(55vh) rotate(-4deg); }
+      15% { opacity: 1; }
+      65% { transform: translateY(-20px) rotate(2deg); }
+      100% { opacity: 1; transform: translateY(0) rotate(0); }
+    }
+
+    /* Keeps gently floating up and down with a slight sway */
+    @keyframes floatBob {
+      0%, 100% { transform: translateY(0) rotate(0); }
+      25% { transform: translateY(-9px) rotate(1.5deg); }
+      50% { transform: translateY(-16px) rotate(0); }
+      75% { transform: translateY(-8px) rotate(-1.5deg); }
+    }
+
+    .kitchen-float-pan {
+      position: relative;
+      width: 2.3rem;
+      height: 2.3rem;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.35rem;
+      line-height: 1;
+      flex-shrink: 0;
+    }
+
+    .kitchen-float-text {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.2;
+    }
+
+    .kitchen-float-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 700;
+      font-size: 1.1rem;
+    }
+
+    .kitchen-float-soon {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: var(--gold);
+      letter-spacing: 0.05em;
+    }
+
+    .steam {
+      position: absolute;
+      bottom: 62%;
+      width: 4px;
+      height: 12px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.6);
+      filter: blur(1.5px);
+      opacity: 0;
+      animation: steamRise 2.4s ease-in infinite;
+    }
+
+    .steam:nth-child(1) { left: 32%; animation-delay: 0s; }
+    .steam:nth-child(2) { left: 48%; animation-delay: 0.8s; }
+    .steam:nth-child(3) { left: 64%; animation-delay: 1.6s; }
+
+    @keyframes steamRise {
+      0% { transform: translateY(0) scaleX(1); opacity: 0; }
+      20% { opacity: 0.8; }
+      100% { transform: translateY(-16px) scaleX(2); opacity: 0; }
+    }
+
+    .kitchen-soon-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--gold);
+      animation: soonPulse 1.8s ease-in-out infinite;
+    }
+
+    @keyframes soonPulse {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(197, 155, 39, 0.6); }
+      50% { box-shadow: 0 0 0 5px rgba(197, 155, 39, 0); }
+    }
+
+    /* The card that opens when the badge is tapped */
+    .kitchen-card {
+      position: fixed;
+      left: 1.25rem;
+      bottom: 2.5rem;
+      z-index: 1450;
+      width: min(360px, calc(100vw - 2.5rem));
+      max-height: calc(100vh - 5rem);
+      overflow-y: auto;
+      background: linear-gradient(160deg, #1d3a2b 0%, #152e22 45%, #0b1a13 100%);
+      color: #fef3c7;
+      border-radius: 20px;
+      padding: 1.75rem 1.5rem 1.4rem;
+      text-align: center;
+      box-shadow: 0 24px 50px rgba(0, 0, 0, 0.35);
+      display: none;
+    }
+
+    .kitchen-card::before {
+      content: "";
+      position: absolute;
+      inset: 8px;
+      border: 1px solid rgba(197, 155, 39, 0.45);
+      border-radius: 14px;
+      pointer-events: none;
+    }
+
+    .kitchen-card.visible {
+      display: block;
+      animation: cardUp 0.35s ease-out;
+    }
+
+    @keyframes cardUp {
+      from { opacity: 0; transform: translateY(20px) scale(0.97); }
+      to { opacity: 1; transform: none; }
+    }
+
+    .kitchen-card-close {
+      position: absolute;
+      top: 0.7rem;
+      right: 0.9rem;
+      background: none;
+      border: none;
+      color: #fef3c7;
+      font-size: 1.4rem;
+      line-height: 1;
+      cursor: pointer;
+      padding: 0.3rem;
+      opacity: 0.8;
+      z-index: 1;
+    }
+
+    .kitchen-card-close:hover { opacity: 1; }
+
+    .kitchen-soon {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      padding: 0.25rem 0.8rem;
+      border-radius: 50px;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+    }
+
+    .kitchen-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.9rem;
+      font-weight: 700;
+      line-height: 1.1;
+      color: #fef3c7;
+      margin-top: 0.9rem;
+    }
+
+    .kitchen-welcome {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 1.05rem;
+      color: var(--gold);
+      margin: 0.15rem 0 0.8rem;
+    }
+
+    .kitchen-desc {
+      color: #d4dccf;
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+    }
+
+    .kitchen-sources {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.4rem;
+      margin-bottom: 1rem;
+      list-style: none;
+    }
+
+    .kitchen-sources li {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(254, 243, 199, 0.18);
+      border-radius: 50px;
+      padding: 0.25rem 0.7rem;
+      font-size: 0.78rem;
+      color: #fef3c7;
+    }
+
+    .kitchen-signoff {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 1.2rem;
+      color: #fef3c7;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+      margin-bottom: 1rem;
+    }
+
+    .kitchen-signoff::before,
+    .kitchen-signoff::after {
+      content: "";
+      height: 1px;
+      width: 24px;
+      background: var(--gold);
+    }
+
+    .kitchen-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .kitchen-actions .btn-social-btn,
+    .kitchen-actions .btn {
+      width: 100%;
+      justify-content: center;
+      text-align: center;
+      padding: 0.7rem 1rem;
+      font-size: 0.9rem;
+    }
+
+    .kitchen-hide {
+      background: none;
+      border: none;
+      color: #9fb0a4;
+      font-family: inherit;
+      font-size: 0.78rem;
+      text-decoration: underline;
+      cursor: pointer;
+      margin-top: 0.8rem;
     }
 
     .brand-banner {
@@ -615,6 +891,7 @@
       gap: 2rem;
       align-items: center;
       box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+      overflow: hidden;
     }
 
     .swarm-banner h2 {
@@ -624,19 +901,88 @@
       margin-bottom: 0.5rem;
     }
 
-    /* Flashing emergency light */
+    /* ============ Rotating emergency siren ============ */
     .siren {
+      position: relative;
       display: inline-block;
-      animation: sirenFlash 1.1s ease-in-out infinite;
+      width: 1.05em;
+      height: 1.05em;
+      margin-right: 0.4em;
+      vertical-align: -0.12em;
+      isolation: isolate;
     }
 
-    @keyframes sirenFlash {
-      0%, 100% { opacity: 1; filter: drop-shadow(0 0 8px rgba(239, 68, 68, 0.95)) drop-shadow(0 0 20px rgba(239, 68, 68, 0.75)); }
-      50% { opacity: 0.3; filter: none; }
+    /* Light beams sweeping around, like a real rotating beacon */
+    .siren::before {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: 38%;
+      width: 6em;
+      height: 6em;
+      margin: -3em 0 0 -3em;
+      border-radius: 50%;
+      background: conic-gradient(
+        rgba(255, 70, 70, 0.6) 0deg,
+        rgba(255, 70, 70, 0) 40deg,
+        rgba(255, 70, 70, 0) 180deg,
+        rgba(255, 70, 70, 0.6) 180deg,
+        rgba(255, 70, 70, 0) 220deg,
+        rgba(255, 70, 70, 0) 360deg
+      );
+      -webkit-mask: radial-gradient(circle, #000 12%, transparent 68%);
+      mask: radial-gradient(circle, #000 12%, transparent 68%);
+      animation: sirenSpin 0.9s linear infinite;
+      pointer-events: none;
+      z-index: -1;
     }
 
-    @media (prefers-reduced-motion: reduce) {
-      .siren { animation: none; }
+    .siren-dome {
+      position: absolute;
+      left: 0.12em;
+      right: 0.12em;
+      top: 0;
+      bottom: 0.26em;
+      border-radius: 50% 50% 10% 10% / 75% 75% 10% 10%;
+      background: radial-gradient(circle at 50% 30%, #ff7a7a 0%, #e11d1d 55%, #8f1111 100%);
+      overflow: hidden;
+      animation: sirenGlow 0.9s linear infinite;
+    }
+
+    /* Bright reflector passing across the dome */
+    .siren-dome::after {
+      content: "";
+      position: absolute;
+      top: -10%;
+      bottom: -10%;
+      width: 45%;
+      left: -55%;
+      background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.95) 50%, rgba(255,255,255,0) 100%);
+      animation: sirenSweep 0.9s linear infinite;
+    }
+
+    .siren-base {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 0.28em;
+      border-radius: 0.06em;
+      background: linear-gradient(180deg, #e5e7eb 0%, #9ca3af 60%, #4b5563 100%);
+    }
+
+    @keyframes sirenSpin {
+      to { transform: rotate(360deg); }
+    }
+
+    @keyframes sirenSweep {
+      from { left: -55%; }
+      to { left: 110%; }
+    }
+
+    @keyframes sirenGlow {
+      0%, 100% { box-shadow: 0 0 4px 1px rgba(239, 68, 68, 0.35); }
+      50% { box-shadow: 0 0 14px 5px rgba(255, 60, 60, 0.95), 0 0 34px 12px rgba(239, 68, 68, 0.5); }
     }
 
     .donate-banner {
@@ -691,6 +1037,9 @@
       font-weight: 600;
       font-size: 0.95rem;
       transition: all 0.2s;
+      border: none;
+      cursor: pointer;
+      font-family: inherit;
     }
 
     .btn-social-btn:hover {
@@ -703,6 +1052,10 @@
       height: 18px;
       fill: currentColor;
     }
+
+    /* YouTube's own red for every YouTube subscribe button */
+    .btn-youtube { background: var(--youtube-red); }
+    .btn-youtube:hover { background: var(--youtube-red-hover); }
 
     .footer-grid {
       display: grid;
@@ -848,6 +1201,14 @@
 
     .mailing-tab.visible { display: block; }
 
+    @media (prefers-reduced-motion: reduce) {
+      .siren::before, .siren-dome, .siren-dome::after,
+      .kitchen-soon-dot, .steam,
+      .kitchen-float.visible, .kitchen-card.visible { animation: none; }
+      .siren-dome { box-shadow: 0 0 12px 4px rgba(239, 68, 68, 0.8); }
+      .siren-dome::after { display: none; }
+    }
+
     @media (max-width: 768px) {
       nav { padding: 1rem 1.25rem; }
 
@@ -867,6 +1228,7 @@
         padding: 5.5rem 2rem 2rem;
         transition: right 0.3s ease;
         box-shadow: -10px 0 30px rgba(0,0,0,0.1);
+        overflow-y: auto;
       }
 
       .nav-links.open { right: 0; }
@@ -913,6 +1275,11 @@
 
       .container { padding: 2.5rem 1.25rem; }
 
+      .kitchen-float { left: 1rem; bottom: 1.5rem; padding: 0.45rem 1rem 0.45rem 0.5rem; gap: 0.55rem; }
+      .kitchen-float-pan { width: 2rem; height: 2rem; font-size: 1.15rem; }
+      .kitchen-float-title { font-size: 1rem; }
+      .kitchen-card { left: 1rem; bottom: 1.5rem; width: calc(100vw - 2rem); max-height: calc(100vh - 3rem); }
+
       .brand-banner { flex-direction: column; text-align: center; padding: 2.5rem 1.5rem; }
       .swarm-banner { grid-template-columns: 1fr; text-align: center; }
       .story-section, .order-section { padding: 2rem 1.5rem; }
@@ -945,6 +1312,7 @@
     <ul class="nav-links" id="navLinks">
       <li><a href="#story">Our Story</a></li>
       <li><a href="#updates">Farm Updates</a></li>
+      <li><a href="#kitchen">Polygrove Kitchen</a></li>
       <li><a href="#eggs">Eggs & Fish</a></li>
       <li><a href="#produce">Fruits & Plants</a></li>
       <li><a href="#apiary">Hilo Hive & Flame</a></li>
@@ -1004,9 +1372,9 @@
         <iframe src="https://snapwidget.com/embed/1130901" class="snapwidget-widget" allowtransparency="true" frameborder="0" scrolling="no" style="border:none; overflow:hidden; width:480px; height:160px" title="farm"></iframe>
       </div>
       <div style="margin-top: 1.75rem;">
-        <a href="https://www.youtube.com/@Polygrovefarms" target="_blank" rel="noopener" class="btn-social-btn">
+        <a href="https://www.youtube.com/@Polygrovefarms?sub_confirmation=1" target="_blank" rel="noopener" class="btn-social-btn btn-youtube">
           <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-          Watch Us on YouTube
+          Subscribe on YouTube
         </a>
       </div>
     </section>
@@ -1349,7 +1717,7 @@
     <!-- Emergency Swarm Removal -->
     <section id="swarm" class="swarm-banner">
       <div>
-        <h2><span class="siren">🚨</span> Emergency Honeybee Swarm Removal</h2>
+        <h2><span class="siren" aria-hidden="true"><span class="siren-dome"></span><span class="siren-base"></span></span>Emergency Honeybee Swarm Removal</h2>
         <p>Spotted a swarm of bees on your property in the Puna or Hilo district? Do not spray them! Call our certified beekeepers for prompt, humane swarm collection and relocation to our safe apiary.</p>
       </div>
       <div>
@@ -1377,6 +1745,39 @@
   <footer style="text-align: center; padding: 2.5rem 1rem; border-top: 1px solid var(--border); color: var(--text-muted); font-size: 0.9rem;">
     <p>&copy; 2026 Polygrove Farms & Hilo Hive & Flame. All rights reserved. Grown & crafted with Korean Natural Farming in Fern Forest, Hawaii.</p>
   </footer>
+
+  <!-- Polygrove Kitchen: floating "Coming Soon" badge -->
+  <button class="kitchen-float" id="kitchenFloat" aria-label="Polygrove Kitchen, coming soon. Tap for details">
+    <span class="kitchen-float-pan" aria-hidden="true"><span class="steam"></span><span class="steam"></span><span class="steam"></span>🍳</span>
+    <span class="kitchen-float-text">
+      <span class="kitchen-float-title">Polygrove Kitchen</span>
+      <span class="kitchen-float-soon"><span class="kitchen-soon-dot"></span>Coming soon</span>
+    </span>
+  </button>
+
+  <!-- Polygrove Kitchen: details card (opens when the badge is tapped) -->
+  <div class="kitchen-card" id="kitchenCard" role="dialog" aria-label="Polygrove Kitchen, coming soon">
+    <button class="kitchen-card-close" id="kitchenCardClose" aria-label="Close">&times;</button>
+    <div class="kitchen-soon"><span class="kitchen-soon-dot"></span>Coming soon to YouTube</div>
+    <h2 class="kitchen-title">Polygrove Kitchen</h2>
+    <p class="kitchen-welcome">“Welcome to Polygrove Kitchen”</p>
+    <p class="kitchen-desc">A new cooking show from our Fern Forest homestead. Every dish starts on the farm and ends at the table.</p>
+    <ul class="kitchen-sources">
+      <li>🥚 Eggs from our hens</li>
+      <li>🐟 Fish from our ponds</li>
+      <li>🍍 Fruit from our trees</li>
+      <li>🍯 Honey from our hives</li>
+    </ul>
+    <p class="kitchen-signoff">Make it good, make it yours.</p>
+    <div class="kitchen-actions">
+      <a href="https://www.youtube.com/@Polygrovefarms?sub_confirmation=1" target="_blank" rel="noopener" class="btn-social-btn btn-youtube">
+        <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+        Subscribe on YouTube
+      </a>
+      <button type="button" class="btn" id="kitchenNotifyBtn">Email Me When It Launches</button>
+    </div>
+    <button type="button" class="kitchen-hide" id="kitchenHide">Hide this for now</button>
+  </div>
 
   <!-- Mailing List Popup -->
   <div class="mailing-overlay" id="mailingOverlay">
@@ -1497,6 +1898,59 @@
       if (e.target === mailingOverlay) hideMailingPopup(true);
     });
     mailingTab.addEventListener('click', showMailingPopup);
+
+    // ===== Polygrove Kitchen floating "Coming Soon" badge =====
+    const kitchenFloat = document.getElementById('kitchenFloat');
+    const kitchenCard = document.getElementById('kitchenCard');
+    const KITCHEN_KEY = 'polygrove_kitchen_hidden';
+
+    function openKitchenCard() {
+      kitchenCard.classList.add('visible');
+      kitchenFloat.classList.remove('visible');
+    }
+
+    function closeKitchenCard() {
+      kitchenCard.classList.remove('visible');
+      kitchenFloat.classList.add('visible');
+    }
+
+    kitchenFloat.addEventListener('click', openKitchenCard);
+    document.getElementById('kitchenCardClose').addEventListener('click', closeKitchenCard);
+
+    // "Hide this for now" tucks it away for 3 days
+    document.getElementById('kitchenHide').addEventListener('click', () => {
+      kitchenCard.classList.remove('visible');
+      kitchenFloat.classList.remove('visible');
+      try { localStorage.setItem(KITCHEN_KEY, Date.now().toString()); } catch (e) {}
+    });
+
+    // "Email Me When It Launches" opens the mailing list signup
+    document.getElementById('kitchenNotifyBtn').addEventListener('click', () => {
+      closeKitchenCard();
+      showMailingPopup();
+    });
+
+    // The "Polygrove Kitchen" link in the menu opens the card
+    document.querySelectorAll('a[href="#kitchen"]').forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        openKitchenCard();
+      });
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && kitchenCard.classList.contains('visible')) closeKitchenCard();
+    });
+
+    (function initKitchenFloat() {
+      let hiddenAt = null;
+      try { hiddenAt = localStorage.getItem(KITCHEN_KEY); } catch (e) {}
+      if (hiddenAt) {
+        const daysSince = (Date.now() - Number(hiddenAt)) / (1000 * 60 * 60 * 24);
+        if (daysSince < 3) return;
+      }
+      setTimeout(() => kitchenFloat.classList.add('visible'), 2000);
+    })();
 
     document.getElementById('mailingForm').addEventListener('submit', () => {
       try { localStorage.setItem(STORAGE_KEY, 'subscribed'); } catch (e) {}
