@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -291,20 +292,35 @@
       flex-wrap: wrap;
     }
 
-    .price-note {
+    /* Size and price on each product */
+    .price-block {
+      display: flex;
+      align-items: baseline;
+      gap: 0.6rem;
+    }
+
+    .price-size {
       font-size: 0.85rem;
       color: var(--ink-soft);
     }
 
-    .product-footer a {
+    .price-amount {
+      font-family: 'Libre Baskerville', Georgia, serif;
+      font-size: 1.6rem;
+      font-weight: 700;
       color: var(--ink);
-      font-weight: 600;
-      font-size: 0.92rem;
-      text-decoration: underline;
-      text-underline-offset: 3px;
     }
 
-    .product-footer a:hover { text-decoration-thickness: 2px; }
+    .pay-btn {
+      padding: 0.7rem 1.6rem;
+    }
+
+    .shipping-note {
+      text-align: center;
+      color: var(--ink-soft);
+      font-size: 0.95rem;
+      margin-top: 2.25rem;
+    }
 
     .about-panel {
       max-width: 760px;
@@ -397,6 +413,9 @@
       .hero h1 { font-size: 2.7rem; }
       .topnav .back-link { font-size: 0.78rem; padding: 0.35rem 0.8rem; }
       .product { padding: 2.5rem 1.6rem 2rem; }
+      .product-footer { flex-direction: column; align-items: stretch; text-align: center; }
+      .price-block { justify-content: center; }
+      .pay-btn { text-align: center; }
     }
   </style>
 </head>
@@ -421,8 +440,8 @@
       <img src="hivelux-products.jpg" alt="HiveLux products: Lip Glaze, Skin Silk, Bee Smooth Body Polishing Scrub, and the Body Ritual card" class="hero-photo">
       <p class="hero-copy">Skin Silk lotion, body polish, lip glaze, and high-end candles — made in small batches in Fern Forest, Big Island.</p>
       <div class="hero-actions">
-        <a href="#collection" class="btn">Explore the Collection</a>
-        <a href="tel:8084817982" class="btn btn-outline">Call / Text to Order</a>
+        <a href="#collection" class="btn">Shop the Collection</a>
+        <a href="tel:8084817982" class="btn btn-outline">Call / Text Us</a>
       </div>
     </div>
   </div>
@@ -444,8 +463,11 @@
             <p>A luxurious polishing scrub that buffs away dullness and leaves skin feeling soft and smooth.</p>
           </div>
           <div class="product-footer">
-            <span class="price-note">Inquire for pricing</span>
-            <a href="tel:8084817982">Call / Text to Order</a>
+            <div class="price-block">
+              <span class="price-size">8 oz</span>
+              <span class="price-amount">$28</span>
+            </div>
+            <a href="https://buy.stripe.com/4gM3cx0t133Z2dQ9Kjgw002" target="_blank" rel="noopener" class="btn pay-btn">Pay Now</a>
           </div>
         </div>
 
@@ -457,8 +479,11 @@
             <p>Rich, silky moisture for skin that feels beautifully soft.</p>
           </div>
           <div class="product-footer">
-            <span class="price-note">Inquire for pricing</span>
-            <a href="tel:8084817982">Call / Text to Order</a>
+            <div class="price-block">
+              <span class="price-size">8 oz</span>
+              <span class="price-amount">$26</span>
+            </div>
+            <a href="https://buy.stripe.com/eVqaEZ4JhgUPaKm1dNgw003" target="_blank" rel="noopener" class="btn pay-btn">Pay Now</a>
           </div>
         </div>
 
@@ -471,24 +496,32 @@
             <p class="netwt">NET WT. 0.15 OZ (4.25 g)</p>
           </div>
           <div class="product-footer">
-            <span class="price-note">Inquire for pricing</span>
-            <a href="tel:8084817982">Call / Text to Order</a>
+            <div class="price-block">
+              <span class="price-size">0.15 oz</span>
+              <span class="price-amount">$14</span>
+            </div>
+            <a href="https://buy.stripe.com/8x24gB0t1bAv3hUg8Hgw004" target="_blank" rel="noopener" class="btn pay-btn">Pay Now</a>
           </div>
         </div>
 
         <div class="frame product">
           <div>
             <span class="tag">Candles</span>
-            <h3>HiveLux Candles</h3>
+            <h3>HiveLux Candle</h3>
             <p class="italic-line">Light. Breathe. Linger.</p>
             <p>High-end candles crafted with the same care as every Hilo Hive & Flame piece.</p>
           </div>
           <div class="product-footer">
-            <span class="price-note">Inquire for pricing</span>
-            <a href="tel:8084817982">Call / Text to Order</a>
+            <div class="price-block">
+              <span class="price-size">10 oz</span>
+              <span class="price-amount">$34</span>
+            </div>
+            <a href="https://buy.stripe.com/28E9AVfnV8oj19M1dNgw006" target="_blank" rel="noopener" class="btn pay-btn">Pay Now</a>
           </div>
         </div>
       </div>
+
+      <p class="shipping-note">Pay online and choose free local pickup in Fern Forest or $15 flat-rate shipping at checkout.</p>
     </div>
   </section>
 
@@ -508,7 +541,7 @@
     <div class="wrap">
       <div class="frame contact-panel">
         <h2>Order HiveLux</h2>
-        <p>Call or text us to reserve your HiveLux pieces and arrange Fern Forest farm pickup.</p>
+        <p>Tap Pay Now on any piece above to order online, or call or text us with questions and custom orders.</p>
         <div class="hero-actions">
           <a href="tel:8084817982" class="btn">Call / Text (808) 481-7982</a>
           <a href="mailto:info@polygrovefarms.com?subject=HiveLux%20Inquiry" class="btn btn-outline">Email Us</a>
