@@ -1308,29 +1308,28 @@
       margin-bottom: 1.5rem;
     }
 
-    /* Sign-up form inside the popup (sends straight to EmailOctopus) */
-    .mailing-form {
-      display: flex;
-      flex-direction: column;
-      gap: 0.75rem;
+    /* EmailOctopus's own sign-up form goes in this box.
+       EmailOctopus shows the "Thanks for subscribing" message (or any error) right here, instantly. */
+    .eo-form-wrap {
+      min-height: 120px;
+      text-align: left;
     }
 
-    .mailing-form input[type="email"],
-    .mailing-form input[type="text"] {
-      padding: 0.9rem 1.1rem;
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      font-family: inherit;
-      font-size: 1rem;
+    .eo-form-wrap form,
+    .eo-form-wrap > div {
+      max-width: 100% !important;
+    }
+
+    /* Shown only if the EmailOctopus form can't load (slow connection, blocker, etc.) */
+    .eo-fallback {
+      display: none;
       text-align: center;
-      background: #ffffff;
     }
 
-    .mailing-form input[type="email"]:focus,
-    .mailing-form input[type="text"]:focus {
-      outline: none;
-      border-color: var(--gold);
-      box-shadow: 0 0 0 3px rgba(197, 155, 39, 0.15);
+    .eo-fallback.visible { display: block; }
+
+    .eo-fallback p {
+      margin-bottom: 1rem;
     }
 
     .mailing-fineprint {
@@ -1338,6 +1337,8 @@
       color: var(--text-muted);
       margin-top: 1rem;
     }
+
+    .mailing-modal .mailing-fineprint { margin-bottom: 0; }
 
     .mailing-fineprint a { color: var(--primary); }
 
@@ -1350,6 +1351,7 @@
       border: none;
       padding: 0.85rem 1.1rem 0.85rem 1.3rem;
       border-radius: 12px 0 0 12px;
+      font-family: inherit;
       font-weight: 600;
       font-size: 0.85rem;
       cursor: pointer;
@@ -1357,6 +1359,8 @@
       box-shadow: -4px 4px 16px rgba(0,0,0,0.15);
       display: none;
     }
+
+    .mailing-tab:hover { background: var(--primary-accent); }
 
     .mailing-tab.visible { display: block; }
 
@@ -2177,7 +2181,7 @@
       <p class="hatch-note">🐣 <strong>Good to know:</strong> Hatchlings are local pickup only in Fern Forest. Chicks are sold straight run (unsexed), so each one could be a hen or a rooster.</p>
     </section>
 
-    <!-- Interactive Order Reservation Form -->
+    <!-- Interactive Order Reservation Form (this one uses Formspree, which is correct for orders) -->
     <section id="order" class="order-section">
       <h2>📦 Place or Reserve an Order</h2>
       <p>Submit your request below and we will contact you directly via call or text to confirm daily stock and Fern Forest farm pickup arrangements.</p>
@@ -2362,29 +2366,33 @@
   </div>
 
   <!-- Mailing List Popup -->
-  <div class="mailing-overlay" id="mailingOverlay">
+  <div class="mailing-overlay" id="mailingOverlay" role="dialog" aria-modal="true" aria-labelledby="mailingTitle">
     <div class="mailing-modal">
       <button class="mailing-close" id="mailingClose" aria-label="Close">&times;</button>
       <div class="mailing-eyebrow">JOIN THE HOMESTEAD LIST</div>
-      <h2>Fresh Deals & What's In Stock</h2>
+      <h2 id="mailingTitle">Fresh Deals & What's In Stock</h2>
       <p>Get a heads up when eggs, honey, hatchlings, and Hilo Hive & Flame goods are ready — plus first access to seasonal specials.</p>
 
-      <!-- Sign-up form: sends straight to your EmailOctopus list so the welcome email goes out -->
-      <form class="mailing-form" id="mailingForm" action="https://eomail5.com/form/30e8d07a-baac-11f1-a243-2345e5741418" method="POST">
-        <div class="hp-field" aria-hidden="true">
-          <input type="text" name="hpc4b27b6e-eb38-11e9-be00-06b4694bee2a" tabindex="-1" autocomplete="off">
-        </div>
-        <input type="email" name="field_0" id="mailingEmail" placeholder="Your email address" required aria-label="Email address">
-        <input type="text" name="field_1" id="mailingName" placeholder="First name (optional)" aria-label="First name">
-        <button type="submit" class="btn" id="mailingSubmitBtn">Sign Me Up</button>
-        <p class="form-status" id="mailingStatus"></p>
-      </form>
+      <!-- EmailOctopus's official sign-up form.
+           EmailOctopus builds the form here, checks the email address,
+           and shows your "Thanks for subscribing" message (or an error) the moment they tap the button.
+           The ID below must match your form in EmailOctopus (Forms > your form > Embed). -->
+      <div class="eo-form-wrap" id="eoFormWrap">
+        <script async src="https://eomail5.com/form/30e8d07a-baac-11f1-a243-2345e5741418.js" data-form="30e8d07a-baac-11f1-a243-2345e5741418"></script>
+      </div>
+
+      <!-- Backup: only appears if the EmailOctopus form doesn't load -->
+      <div class="eo-fallback" id="eoFallback">
+        <p>Tap below to join our list on our secure sign-up page.</p>
+        <a href="https://polygrovefarms.eo.page/vqkbc" target="_blank" rel="noopener" class="btn">Join the Homestead List</a>
+      </div>
 
       <p class="mailing-fineprint">No spam — just farm updates. Unsubscribe anytime.</p>
     </div>
   </div>
 
-  <button class="mailing-tab" id="mailingTab">📬 Join Our List</button>
+  <!-- Side button that opens the popup -->
+  <button type="button" class="mailing-tab" id="mailingTab">📬 Join Our List</button>
 
   <script>
     const navToggle = document.getElementById('navToggle');
@@ -2409,6 +2417,7 @@
     navOverlay.addEventListener('click', closeNav);
     navLinks.querySelectorAll('a').forEach(link => link.addEventListener('click', closeNav));
 
+    // ===== Reservation order form (Formspree) =====
     function wireSecureForm(formId, statusId, btnId, successMessage) {
       const form = document.getElementById(formId);
       const status = document.getElementById(statusId);
@@ -2468,6 +2477,7 @@
       });
     });
 
+    // ===== Mailing list popup + side "Join Our List" button =====
     const mailingOverlay = document.getElementById('mailingOverlay');
     const mailingClose = document.getElementById('mailingClose');
     const mailingTab = document.getElementById('mailingTab');
@@ -2476,6 +2486,7 @@
     function showMailingPopup() {
       mailingOverlay.classList.add('visible');
       mailingTab.classList.remove('visible');
+      checkEmailOctopusLoaded();
     }
 
     function hideMailingPopup(remember) {
@@ -2491,6 +2502,48 @@
       if (e.target === mailingOverlay) hideMailingPopup(true);
     });
     mailingTab.addEventListener('click', showMailingPopup);
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && mailingOverlay.classList.contains('visible')) hideMailingPopup(true);
+    });
+
+    // If the EmailOctopus form hasn't appeared after a few seconds,
+    // show the backup button so customers can always sign up.
+    let eoCheckTimer = null;
+    function checkEmailOctopusLoaded() {
+      clearTimeout(eoCheckTimer);
+      eoCheckTimer = setTimeout(() => {
+        const wrap = document.getElementById('eoFormWrap');
+        const fallback = document.getElementById('eoFallback');
+        const hasForm = wrap.querySelector('form, input, iframe');
+        if (!hasForm) {
+          wrap.style.display = 'none';
+          fallback.classList.add('visible');
+        }
+      }, 5000);
+    }
+
+    // When someone signs up, don't pop the window up on them again later
+    document.getElementById('eoFormWrap').addEventListener('submit', () => {
+      try { localStorage.setItem(STORAGE_KEY, 'subscribed'); } catch (err) {}
+    }, true);
+
+    (function initMailingPopup() {
+      let dismissed = null;
+      try { dismissed = localStorage.getItem(STORAGE_KEY); } catch (e) {}
+
+      // The side button is always available
+      mailingTab.classList.add('visible');
+
+      if (dismissed === 'subscribed') return;
+
+      if (dismissed) {
+        const daysSince = (Date.now() - Number(dismissed)) / (1000 * 60 * 60 * 24);
+        if (daysSince < 7) return;
+      }
+
+      setTimeout(showMailingPopup, 6000);
+    })();
 
     // ===== Follow the Farm: load the YouTube player when the cover is tapped =====
     document.getElementById('videoPoster').addEventListener('click', () => {
@@ -2552,60 +2605,6 @@
         if (daysSince < 3) return;
       }
       setTimeout(() => kitchenFloat.classList.add('visible'), 2000);
-    })();
-
-    // ===== Mailing list sign-up: sends the email to EmailOctopus =====
-    (function wireMailingForm() {
-      const form = document.getElementById('mailingForm');
-      const status = document.getElementById('mailingStatus');
-      const btn = document.getElementById('mailingSubmitBtn');
-
-      form.addEventListener('submit', async function (e) {
-        e.preventDefault();
-
-        // Spam trap: real people never fill in the hidden box
-        const trap = form.querySelector('.hp-field input');
-        if (trap && trap.value) { form.reset(); return; }
-
-        btn.disabled = true;
-        btn.textContent = 'Signing you up...';
-        status.className = 'form-status';
-        status.textContent = '';
-
-        try {
-          await fetch(form.action, {
-            method: 'POST',
-            body: new FormData(form),
-            mode: 'no-cors'
-          });
-          status.textContent = "You're on the list! 🐝 Check your inbox for a welcome email.";
-          status.className = 'form-status success';
-          form.reset();
-          try { localStorage.setItem(STORAGE_KEY, 'subscribed'); } catch (err) {}
-        } catch (err) {
-          status.textContent = "Something didn't go through. Please try again, or call or text (808) 481-7982.";
-          status.className = 'form-status error';
-        } finally {
-          btn.disabled = false;
-          btn.textContent = 'Sign Me Up';
-        }
-      });
-    })();
-
-    (function initMailingPopup() {
-      let dismissed = null;
-      try { dismissed = localStorage.getItem(STORAGE_KEY); } catch (e) {}
-
-      mailingTab.classList.add('visible');
-
-      if (dismissed === 'subscribed') return;
-
-      if (dismissed) {
-        const daysSince = (Date.now() - Number(dismissed)) / (1000 * 60 * 60 * 24);
-        if (daysSince < 7) return;
-      }
-
-      setTimeout(showMailingPopup, 6000);
     })();
 
     // Match the banner color to the Hilo Hive & Flame logo image
