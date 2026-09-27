@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -1354,6 +1353,219 @@
 
     .mailing-tab.visible { display: block; }
 
+    /* ============ Meet the Flock: hatchling breed cards ============ */
+    .flock-group-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.7rem;
+      color: var(--primary);
+      margin: 2.5rem 0 1.25rem;
+    }
+
+    .flock-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+      gap: 1.75rem;
+    }
+
+    .flock-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .flock-photo {
+      position: relative;
+      aspect-ratio: 4 / 3;
+      background: #e9efe9;
+      overflow: hidden;
+    }
+
+    .flock-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* Shown when a breed doesn't have a photo yet */
+    .flock-photo.no-photo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(160deg, #7a2e1d 0%, #4d1b10 100%);
+      color: #fef3c7;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.6rem;
+      font-weight: 700;
+      text-align: center;
+      padding: 1rem;
+    }
+
+    /* Egg-shaped swatch showing the color of egg each breed lays */
+    .egg-tag {
+      position: absolute;
+      right: 0.9rem;
+      bottom: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+      background: rgba(255, 255, 255, 0.94);
+      border-radius: 50px;
+      padding: 0.3rem 0.75rem 0.3rem 0.4rem;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--primary);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    .egg-tag::before {
+      content: "";
+      width: 15px;
+      height: 19px;
+      border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+      background: var(--egg, #c9895a);
+      box-shadow: inset -2px -3px 4px rgba(0, 0, 0, 0.15);
+    }
+
+    .flock-body {
+      padding: 1.5rem 1.6rem 1.6rem;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+
+    .flock-body h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.75rem;
+      color: var(--primary);
+      line-height: 1.1;
+    }
+
+    .flock-tagline {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 1.1rem;
+      color: var(--gold-hover);
+      margin-bottom: 0.75rem;
+    }
+
+    .flock-body > p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    .flock-more {
+      margin-top: 0.75rem;
+      color: var(--text-muted);
+      font-size: 0.93rem;
+    }
+
+    .flock-more summary {
+      cursor: pointer;
+      color: var(--primary);
+      font-weight: 600;
+      font-size: 0.88rem;
+    }
+
+    .flock-more summary:focus-visible,
+    .reserve-btn:focus-visible {
+      outline: 2px solid var(--gold);
+      outline-offset: 3px;
+    }
+
+    .flock-more p { margin-top: 0.6rem; }
+
+    .flock-buy {
+      margin-top: auto;
+      padding-top: 1.25rem;
+      border-top: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .flock-spacer { height: 1.25rem; }
+
+    .flock-price {
+      font-size: 1.45rem;
+      font-weight: 700;
+      color: var(--gold);
+      line-height: 1.1;
+    }
+
+    .flock-price small {
+      display: block;
+      font-size: 0.78rem;
+      font-weight: 500;
+      color: var(--text-muted);
+    }
+
+    .reserve-btn {
+      background: var(--primary);
+      color: #fff;
+      border: none;
+      border-radius: 12px;
+      padding: 0.7rem 1.2rem;
+      font-family: inherit;
+      font-weight: 600;
+      font-size: 0.9rem;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: background 0.2s;
+    }
+
+    .reserve-btn:hover { background: var(--primary-accent); }
+
+    .flock-actions {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .pay-btn {
+      display: inline-block;
+      background: var(--gold);
+      color: #fff;
+      text-decoration: none;
+      border-radius: 12px;
+      padding: 0.7rem 1.2rem;
+      font-weight: 600;
+      font-size: 0.9rem;
+      white-space: nowrap;
+      transition: background 0.2s;
+    }
+
+    .pay-btn:hover { background: var(--gold-hover); }
+
+    .pay-btn:focus-visible {
+      outline: 2px solid var(--primary);
+      outline-offset: 3px;
+    }
+
+    /* On breed cards, Reserve sits beside Pay now as the quieter choice */
+    .flock-actions .reserve-btn {
+      background: transparent;
+      color: var(--primary);
+      box-shadow: inset 0 0 0 1.5px var(--primary);
+    }
+
+    .flock-actions .reserve-btn:hover { background: #f0f5f1; }
+
+    .hatch-note {
+      background: #f0fdf4;
+      border: 1px solid #bbf7d0;
+      border-radius: 16px;
+      padding: 1.25rem 1.5rem;
+      color: #166534;
+      font-size: 0.95rem;
+      margin-top: 2rem;
+    }
+
     @media (prefers-reduced-motion: reduce) {
       .siren::before, .siren-dome, .siren-dome::after,
       .kitchen-soon-dot, .kitchen-bubble-inner, .neon-soon,
@@ -1371,7 +1583,8 @@
       .nav-links {
         position: fixed;
         top: 0;
-        right: -100%;
+        right: 0;
+        display: none;
         height: 100vh;
         width: min(78vw, 320px);
         background: #ffffff;
@@ -1380,12 +1593,17 @@
         align-items: flex-start;
         gap: 0;
         padding: 5.5rem 2rem 2rem;
-        transition: right 0.3s ease;
+        animation: menuSlide 0.3s ease;
         box-shadow: -10px 0 30px rgba(0,0,0,0.1);
         overflow-y: auto;
       }
 
-      .nav-links.open { right: 0; }
+      .nav-links.open { display: flex; }
+
+      @keyframes menuSlide {
+        from { transform: translateX(100%); }
+        to { transform: none; }
+      }
 
       .nav-links li { width: 100%; }
 
@@ -1460,6 +1678,7 @@
     }
   </style>
 </head>
+
 <body>
 
   <!-- Sticky Nav -->
@@ -1565,7 +1784,13 @@
           </div>
           <div class="card-footer">
             <span class="price-label">Price</span>
-            <span class="price">$5.00 / doz</span>
+            <div class="price-options">
+              <div class="price-option">
+                <span class="size">1 dozen</span>
+                <span class="amount">$5.00</span>
+                <a href="https://buy.stripe.com/5kQcN76Kk08icrFdoo6Zy07" target="_blank" rel="noopener" class="pay-now-btn">Pay Now</a>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -1578,7 +1803,13 @@
           </div>
           <div class="card-footer">
             <span class="price-label">Price</span>
-            <span class="price">$8.00 / ½ doz</span>
+            <div class="price-options">
+              <div class="price-option">
+                <span class="size">½ dozen</span>
+                <span class="amount">$8.00</span>
+                <a href="https://buy.stripe.com/8x29AVc4E3ku63hgAA6Zy08" target="_blank" rel="noopener" class="pay-now-btn">Pay Now</a>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -1619,7 +1850,7 @@
           <div>
             <span class="badge">Nursery Starts</span>
             <h3>Plants & Herbs</h3>
-            <p>Climate-adapted starts, culinary herbs, and specialty greens cultivated for high-elevation growing.</p>
+            <p>Fresh culinary herbs, including cilantro, basil, parsley, and rosemary, plus climate-adapted starts and specialty greens cultivated for high-elevation growing.</p>
             <span class="stock-badge available">Available Now</span>
           </div>
           <div class="card-footer">
@@ -1735,24 +1966,180 @@
       </div>
     </section>
 
-    <!-- Live Hatchlings Section -->
+    <!-- Live Hatchlings: Meet the Flock -->
     <section id="hatchlings">
-      <h2 class="section-title">🐥 Live Hatchlings & Poultry</h2>
-      <p class="section-subtitle-text">Healthy chicks, ducklings, turkey poults, and guinea keets raised on organic, unmedicated feeding protocols.</p>
-      <div class="grid">
-        <div class="card">
-          <div>
-            <span class="badge">Chicken Breeds</span>
-            <h3>Chicks & Laying Breeds</h3>
-            <p>Featuring Jersey Giants, Rhode Island Reds, and Ermine Ameraucanas raised with natural care.</p>
-            <span class="stock-badge limited">Seasonal — Check Availability</span>
-          </div>
-          <div class="card-footer">
-            <span class="price-label">Availability</span>
-            <span class="price">Seasonal</span>
-          </div>
-        </div>
+      <h2 class="section-title">🐥 Live Hatchlings: Meet the Flock</h2>
+      <p class="section-subtitle-text">Chicks and heritage turkey poults hatched right here in Fern Forest, raised on organic, unmedicated feed and already at home in the island climate. Tap "Pay now" to pay online, or "Reserve" to hold your birds and pay at pickup. Either way, we'll call or text you when they're ready.</p>
 
+      <h3 class="flock-group-title">Chickens</h3>
+      <div class="flock-grid">
+
+        <article class="flock-card">
+          <div class="flock-photo">
+            <img src="ameraucana.jpg" alt="Ameraucana hen with fluffy cheek muffs" loading="lazy">
+            <span class="egg-tag" style="--egg:#9cc9d6;">Blue eggs</span>
+          </div>
+          <div class="flock-body">
+            <h3>Ameraucana</h3>
+            <p class="flock-tagline">The blue egg layer</p>
+            <p>If you've dreamed of opening the nesting box to find sky-blue eggs, this is your bird. Calm, friendly, and quiet, Ameraucanas are wonderful for families with keiki.</p>
+            <details class="flock-more">
+              <summary>More about this breed</summary>
+              <p>Developed in the United States in the 1970s to keep the famous blue-egg trait while producing a healthier, sturdier chicken, the Ameraucana earned official breed recognition in 1984. Look for their fluffy cheek muffs and small pea combs. Chicks hatch in a mix of colors, so every one is a little surprise.</p>
+            </details>
+            <div class="flock-buy">
+              <div class="flock-price">$12 <small>each, straight run</small></div>
+              <div class="flock-actions">
+                <a href="https://buy.stripe.com/00wdRbb0A8EO1N1bgg6Zy00" target="_blank" rel="noopener" class="pay-btn">Pay now</a>
+                <button type="button" class="reserve-btn" data-item="Ameraucana Chicks ($12 each)">Reserve</button>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="flock-card">
+          <div class="flock-photo">
+            <img src="rhode-island-red.jpg" alt="Rhode Island Red hen with deep mahogany feathers" loading="lazy">
+            <span class="egg-tag" style="--egg:#b87543;">Brown eggs</span>
+          </div>
+          <div class="flock-body">
+            <h3>Rhode Island Red</h3>
+            <p class="flock-tagline">The classic American farm hen</p>
+            <p>One of the most famous chickens in the world: a dependable brown egg layer, hardy enough to handle just about anything. A perfect first-flock bird.</p>
+            <details class="flock-more">
+              <summary>More about this breed</summary>
+              <p>Developed in New England in the late 1800s as a dual-purpose bird, the Rhode Island Red often lays 5 or more eggs a week. With deep mahogany-red feathers, Reds are as pretty as they are practical: confident, easygoing foragers that love to roam the yard.</p>
+            </details>
+            <div class="flock-buy">
+              <div class="flock-price">$10 <small>each, straight run</small></div>
+              <div class="flock-actions">
+                <a href="https://buy.stripe.com/dRm8wR3y81cm4ZdgAA6Zy01" target="_blank" rel="noopener" class="pay-btn">Pay now</a>
+                <button type="button" class="reserve-btn" data-item="Rhode Island Red Chicks ($10 each)">Reserve</button>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="flock-card">
+          <div class="flock-photo">
+            <img src="red-star.jpg" alt="Red Star hen with golden-red feathers" loading="lazy">
+            <span class="egg-tag" style="--egg:#b87543;">Brown eggs</span>
+          </div>
+          <div class="flock-body">
+            <h3>Red Star</h3>
+            <p class="flock-tagline">The egg-laying champion</p>
+            <p>Bred for one thing above all: eggs, and lots of them. These gentle, hardworking hens can lay close to 300 brown eggs a year.</p>
+            <details class="flock-more">
+              <summary>More about this breed</summary>
+              <p>Red Stars often start laying earlier than other breeds and keep going steadily. They're low-maintenance and easy to handle, perfect for beginners and busy households alike, and their golden-red feathers glow in the Hawaiian sun.</p>
+            </details>
+            <div class="flock-buy">
+              <div class="flock-price">$10 <small>each, straight run</small></div>
+              <div class="flock-actions">
+                <a href="https://buy.stripe.com/28EcN79Ww8EO3V9ckk6Zy02" target="_blank" rel="noopener" class="pay-btn">Pay now</a>
+                <button type="button" class="reserve-btn" data-item="Red Star Chicks ($10 each)">Reserve</button>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="flock-card">
+          <div class="flock-photo">
+            <img src="jersey-giant.jpg" alt="Large white Jersey Giant chicken" loading="lazy">
+            <span class="egg-tag" style="--egg:#a8683b;">Large brown eggs</span>
+          </div>
+          <div class="flock-body">
+            <h3>Jersey Giant</h3>
+            <p class="flock-tagline">The gentle giant</p>
+            <p>The largest American chicken breed. Grown roosters can reach around 13 pounds, yet Jersey Giants are calm and gentle with people.</p>
+            <details class="flock-more">
+              <summary>More about this breed</summary>
+              <p>Developed in New Jersey in the late 1800s, Jersey Giants come in black and white varieties. They lay large brown eggs and make excellent meat birds too. They take a little longer to grow up than other breeds, but a Jersey Giant strutting across the yard is worth the wait.</p>
+            </details>
+            <div class="flock-buy">
+              <div class="flock-price">$12 <small>each, straight run</small></div>
+              <div class="flock-actions">
+                <a href="https://buy.stripe.com/28E5kF7OobR0ajx5VW6Zy03" target="_blank" rel="noopener" class="pay-btn">Pay now</a>
+                <button type="button" class="reserve-btn" data-item="Jersey Giant Chicks ($12 each)">Reserve</button>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="flock-card">
+          <div class="flock-photo">
+            <img src="andalusian.jpg" alt="Blue Andalusian hen with slate-blue laced feathers" loading="lazy">
+            <span class="egg-tag" style="--egg:#f4efe4;">White eggs</span>
+          </div>
+          <div class="flock-body">
+            <h3>Andalusian</h3>
+            <p class="flock-tagline">The blue beauty from Spain</p>
+            <p>Slate-blue feathers edged in darker lacing make this one of the most striking chickens you'll ever see. A warm-climate breed that's a natural fit for Hawaii.</p>
+            <details class="flock-more">
+              <summary>More about this breed</summary>
+              <p>Originally from the Andalusia region of Spain, Andalusians are lively, alert foragers. The hens lay large white eggs and rarely go broody, so they keep on laying. Because of how the blue color is inherited, chicks can hatch blue, black, or a speckled white called "splash," so every hatch is a little different.</p>
+            </details>
+            <div class="flock-buy">
+              <div class="flock-price">$15 <small>each, straight run</small></div>
+              <div class="flock-actions">
+                <a href="https://buy.stripe.com/bJe28t2u4dZ8dvJ1FG6Zy04" target="_blank" rel="noopener" class="pay-btn">Pay now</a>
+                <button type="button" class="reserve-btn" data-item="Andalusian Chicks ($15 each)">Reserve</button>
+              </div>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <h3 class="flock-group-title">Heritage Turkeys</h3>
+      <div class="flock-grid">
+
+        <article class="flock-card">
+          <div class="flock-photo">
+            <img src="bourbon-red.jpg" alt="Bourbon Red turkey with chestnut feathers and white tail" loading="lazy">
+          </div>
+          <div class="flock-body">
+            <h3>Bourbon Red</h3>
+            <p class="flock-tagline">The heritage beauty</p>
+            <p>Rich chestnut-red feathers with snowy white wing and tail tips. Calm around people, great foragers, and a perfect first turkey for any homestead.</p>
+            <details class="flock-more">
+              <summary>More about this breed</summary>
+              <p>Developed in Bourbon County, Kentucky, in the late 1800s, the Bourbon Red is one of America's most treasured heritage turkeys, known for flavorful meat. Turkey poults are hard to find in Hawaii, since mainland hatcheries can't ship them here.</p>
+            </details>
+            <div class="flock-buy">
+              <div class="flock-price">$15 <small>each, unsexed</small></div>
+              <div class="flock-actions">
+                <a href="https://buy.stripe.com/bJeeVffgQ8EOezN8446Zy05" target="_blank" rel="noopener" class="pay-btn">Pay now</a>
+                <button type="button" class="reserve-btn" data-item="Bourbon Red Turkey Poults ($15 each)">Reserve</button>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="flock-card">
+          <div class="flock-photo">
+            <img src="narragansett.jpg" alt="Narragansett turkey with gray, black, and white feathers" loading="lazy">
+          </div>
+          <div class="flock-body">
+            <h3>Narragansett</h3>
+            <p class="flock-tagline">A rare piece of American history</p>
+            <p>Striking steel gray, black, tan, and white feathers. Calm, good-natured, and wonderful mothers. Raising them helps keep a rare breed alive.</p>
+            <details class="flock-more">
+              <summary>More about this breed</summary>
+              <p>Named after Narragansett Bay in Rhode Island, this heritage breed dates back to the 1800s and was once a New England farm favorite. Today it's a rare breed, which makes these poults a special find on the Big Island.</p>
+            </details>
+            <div class="flock-buy">
+              <div class="flock-price">$18 <small>each, unsexed</small></div>
+              <div class="flock-actions">
+                <a href="https://buy.stripe.com/eVqcN7d8I08ibnBckk6Zy06" target="_blank" rel="noopener" class="pay-btn">Pay now</a>
+                <button type="button" class="reserve-btn" data-item="Narragansett Turkey Poults ($18 each)">Reserve</button>
+              </div>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <h3 class="flock-group-title">Ducklings & Keets</h3>
+      <div class="grid">
         <div class="card">
           <div>
             <span class="badge">Pasture Breeds</span>
@@ -1762,20 +2149,7 @@
           </div>
           <div class="card-footer">
             <span class="price-label">Availability</span>
-            <span class="price">Seasonal</span>
-          </div>
-        </div>
-
-        <div class="card">
-          <div>
-            <span class="badge">Turkey Varieties</span>
-            <h3>Turkey Poults</h3>
-            <p>Broad Breasted White and Heritage Turkey poults raised for homesteading and pasture feeding.</p>
-            <span class="stock-badge limited">Seasonal — Check Availability</span>
-          </div>
-          <div class="card-footer">
-            <span class="price-label">Availability</span>
-            <span class="price">Seasonal</span>
+            <button type="button" class="reserve-btn" data-item="Runner Ducklings">Reserve</button>
           </div>
         </div>
 
@@ -1788,10 +2162,12 @@
           </div>
           <div class="card-footer">
             <span class="price-label">Availability</span>
-            <span class="price">Seasonal</span>
+            <button type="button" class="reserve-btn" data-item="Guinea Fowl Keets">Reserve</button>
           </div>
         </div>
       </div>
+
+      <p class="hatch-note">🐣 <strong>Good to know:</strong> Hatchlings are local pickup only in Fern Forest. Chicks are sold straight run (unsexed), so each one could be a hen or a rooster.</p>
     </section>
 
     <!-- Interactive Order Reservation Form -->
@@ -1827,6 +2203,7 @@
               </optgroup>
               <optgroup label="Fruits, Plants & Trees">
                 <option value="Island Fruits">Island Fruits</option>
+                <option value="Fresh Herbs (cilantro, basil, parsley, rosemary)">Fresh Herbs (cilantro, basil, parsley, rosemary)</option>
                 <option value="Plants & Nursery Starts">Plants & Nursery Starts</option>
                 <option value="Fruit & Landscape Trees">Fruit & Landscape Trees</option>
               </optgroup>
@@ -1835,13 +2212,20 @@
                 <option value="Handcrafted Beeswax Candles">Handcrafted Beeswax Candles</option>
                 <option value="Beeswax & Honey Lotions">Beeswax & Honey Lotions</option>
               </optgroup>
-              <optgroup label="Poultry Breeds & Hatchlings">
-                <option value="Runner Ducklings">Runner Ducklings</option>
-                <option value="Jersey Giant Chicks">Jersey Giant Chicks</option>
-                <option value="Rhode Island Red Chicks">Rhode Island Red Chicks</option>
-                <option value="Ermine Ameraucana Chicks">Ermine Ameraucana Chicks</option>
+              <optgroup label="Chicks (straight run)">
+                <option value="Ameraucana Chicks ($12 each)">Ameraucana Chicks ($12 each)</option>
+                <option value="Rhode Island Red Chicks ($10 each)">Rhode Island Red Chicks ($10 each)</option>
+                <option value="Red Star Chicks ($10 each)">Red Star Chicks ($10 each)</option>
+                <option value="Jersey Giant Chicks ($12 each)">Jersey Giant Chicks ($12 each)</option>
+                <option value="Andalusian Chicks ($15 each)">Andalusian Chicks ($15 each)</option>
+              </optgroup>
+              <optgroup label="Turkey Poults">
+                <option value="Bourbon Red Turkey Poults ($15 each)">Bourbon Red Turkey Poults ($15 each)</option>
+                <option value="Narragansett Turkey Poults ($18 each)">Narragansett Turkey Poults ($18 each)</option>
                 <option value="Broad Breasted White Turkey Poults">Broad Breasted White Turkey Poults</option>
-                <option value="Heritage Turkey Poults">Heritage Turkey Poults</option>
+              </optgroup>
+              <optgroup label="Ducklings & Keets">
+                <option value="Runner Ducklings">Runner Ducklings</option>
                 <option value="Guinea Fowl Keets">Guinea Fowl Keets</option>
               </optgroup>
             </select>
@@ -2065,6 +2449,16 @@
 
     wireSecureForm('orderForm', 'orderStatus', 'orderSubmitBtn', "Reservation received! We'll call or text you shortly.");
     wireSecureForm('mailingForm', 'mailingStatus', 'mailingSubmitBtn', "You're on the list! 🐝");
+
+    // ===== Meet the Flock: "Reserve" fills in the order form and jumps to it =====
+    document.querySelectorAll('.reserve-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const select = document.getElementById('item');
+        select.value = btn.dataset.item;
+        document.getElementById('order').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        setTimeout(() => document.getElementById('quantity').focus({ preventScroll: true }), 600);
+      });
+    });
 
     const mailingOverlay = document.getElementById('mailingOverlay');
     const mailingClose = document.getElementById('mailingClose');
